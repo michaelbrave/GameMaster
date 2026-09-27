@@ -1,0 +1,282 @@
+{
+  "resolution": {
+    "id": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+    "command": "travel",
+    "outcome": "encounter",
+    "worldTick": 2,
+    "text": [
+      "You travel to the hills (1,0).",
+      "Bandits burst from cover, weapons drawn, demanding your coin!"
+    ],
+    "rolls": [
+      {
+        "tableId": "core/terrain-generation",
+        "tableVersion": 1,
+        "label": "Hex terrain generation",
+        "purpose": "worldgen.terrain",
+        "depth": 0,
+        "selection": {
+          "mode": "weighted",
+          "roll": 520,
+          "totalWeight": 630
+        },
+        "selectedEntryId": "hills",
+        "text": "Hills"
+      },
+      {
+        "tableId": "core/site-generation",
+        "tableVersion": 1,
+        "label": "Hex site generation",
+        "purpose": "worldgen.site",
+        "depth": 0,
+        "selection": {
+          "mode": "weighted",
+          "roll": 12,
+          "totalWeight": 90
+        },
+        "selectedEntryId": "quiet",
+        "text": "Nothing of note."
+      },
+      {
+        "tableId": "core/travel-encounter",
+        "tableVersion": 1,
+        "label": "Travel encounter",
+        "purpose": "travel.encounter",
+        "depth": 0,
+        "selection": {
+          "mode": "weighted",
+          "roll": 58,
+          "totalWeight": 100
+        },
+        "selectedEntryId": "bandit-ambush",
+        "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+      }
+    ],
+    "events": [
+      {
+        "id": "847cb79e-7418-4190-877b-199031133f43",
+        "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+        "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+        "streamVersion": 2,
+        "seq": 63,
+        "type": "time_advanced",
+        "schemaVersion": 1,
+        "worldTick": 0,
+        "recordedAt": "2026-09-26T16:13:36.050Z",
+        "actor": {
+          "type": "character",
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "visibility": "public",
+        "payload": {
+          "fromTick": 0,
+          "toTick": 2,
+          "cost": 2,
+          "reason": "travel"
+        }
+      },
+      {
+        "id": "fac564bd-5c4d-47dc-a65a-f78868106361",
+        "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+        "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+        "streamVersion": 3,
+        "seq": 64,
+        "type": "character_moved",
+        "schemaVersion": 1,
+        "worldTick": 2,
+        "recordedAt": "2026-09-26T16:13:36.050Z",
+        "actor": {
+          "type": "character",
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "visibility": "public",
+        "payload": {
+          "from": {
+            "q": 0,
+            "r": 0
+          },
+          "to": {
+            "q": 1,
+            "r": 0
+          },
+          "cost": 2,
+          "terrain": "hills"
+        }
+      },
+      {
+        "id": "8470b4df-e325-47e1-bf1e-9fc7778a19db",
+        "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+        "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+        "streamVersion": 2,
+        "seq": 65,
+        "type": "hex_discovered",
+        "schemaVersion": 1,
+        "worldTick": 2,
+        "recordedAt": "2026-09-26T16:13:36.050Z",
+        "actor": {
+          "type": "character",
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "visibility": "public",
+        "payload": {
+          "terrain": "hills"
+        }
+      },
+      {
+        "id": "87cd4383-86c2-4e57-84ca-df4e28ae5adb",
+        "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+        "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+        "streamVersion": 3,
+        "seq": 66,
+        "type": "log_appended",
+        "schemaVersion": 1,
+        "worldTick": 2,
+        "recordedAt": "2026-09-26T16:13:36.050Z",
+        "actor": {
+          "type": "character",
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "visibility": "public",
+        "payload": {
+          "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+        }
+      },
+      {
+        "id": "7ece45f5-1af8-4782-9b90-85be8ad86913",
+        "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+        "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+        "streamVersion": 4,
+        "seq": 67,
+        "type": "encounter_started",
+        "schemaVersion": 1,
+        "worldTick": 2,
+        "recordedAt": "2026-09-26T16:13:36.050Z",
+        "actor": {
+          "type": "character",
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+        "visibility": "public",
+        "payload": {
+          "encounterId": "ad9a171d-fc20-4827-9fe8-b237d5504bc9",
+          "tableId": "core/travel-encounter",
+          "tableVersion": 1,
+          "text": "Bandits burst from cover, weapons drawn, demanding your coin!",
+          "choices": [
+            {
+              "id": "fight",
+              "label": "Fight them off",
+              "table": {
+                "id": "core/bandit-fight",
+                "version": 1
+              },
+              "presentation": "battlefield"
+            },
+            {
+              "id": "flee",
+              "label": "Flee into the wilds",
+              "table": {
+                "id": "core/bandit-flee",
+                "version": 1
+              }
+            },
+            {
+              "id": "bargain",
+              "label": "Try to bargain",
+              "table": {
+                "id": "core/bandit-bargain",
+                "version": 1
+              }
+            }
+          ],
+          "startedTick": 2,
+          "hex": {
+            "q": 1,
+            "r": 0
+          },
+          "asset": "icon:bandits",
+          "assetLabel": "Bandits",
+          "entryId": "bandit-ambush"
+        }
+      }
+    ]
+  },
+  "session": {
+    "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+    "version": 1,
+    "position": {
+      "q": 1,
+      "r": 0
+    },
+    "pendingEncounter": {
+      "encounterId": "ad9a171d-fc20-4827-9fe8-b237d5504bc9",
+      "tableId": "core/travel-encounter",
+      "tableVersion": 1,
+      "text": "Bandits burst from cover, weapons drawn, demanding your coin!",
+      "choices": [
+        {
+          "id": "fight",
+          "label": "Fight them off",
+          "table": {
+            "id": "core/bandit-fight",
+            "version": 1
+          },
+          "presentation": "battlefield"
+        },
+        {
+          "id": "flee",
+          "label": "Flee into the wilds",
+          "table": {
+            "id": "core/bandit-flee",
+            "version": 1
+          }
+        },
+        {
+          "id": "bargain",
+          "label": "Try to bargain",
+          "table": {
+            "id": "core/bandit-bargain",
+            "version": 1
+          }
+        }
+      ],
+      "startedTick": 2,
+      "hex": {
+        "q": 1,
+        "r": 0
+      },
+      "asset": "icon:bandits",
+      "assetLabel": "Bandits"
+    }
+  },
+  "worldTick": 2
+}

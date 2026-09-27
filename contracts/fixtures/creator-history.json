@@ -1,0 +1,2504 @@
+{
+  "events": [
+    {
+      "id": "fd656ad2-211d-455d-9b9a-d471a8c55fd9",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "world:8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamVersion": 1,
+      "seq": 58,
+      "type": "world_created",
+      "schemaVersion": 1,
+      "worldTick": 0,
+      "recordedAt": "2026-09-26T16:13:36.036Z",
+      "actor": null,
+      "location": null,
+      "causationId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "correlationId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "visibility": "public",
+      "payload": {
+        "name": "Fixture World",
+        "gridType": "hex",
+        "contentRelease": "core@1.0.0",
+        "regionRadius": 2
+      }
+    },
+    {
+      "id": "f6aa9231-6b86-4ff1-bd2d-b108dd2d93a7",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:0,0",
+      "streamVersion": 1,
+      "seq": 59,
+      "type": "hex_materialized",
+      "schemaVersion": 1,
+      "worldTick": 0,
+      "recordedAt": "2026-09-26T16:13:36.037Z",
+      "actor": null,
+      "location": {
+        "q": 0,
+        "r": 0
+      },
+      "causationId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "correlationId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "visibility": "system",
+      "payload": {
+        "terrain": "plains",
+        "tags": [
+          "terrain:plains"
+        ],
+        "sites": [],
+        "facts": [],
+        "contentRelease": "core@1.0.0",
+        "rolls": [
+          {
+            "tableId": "core/site-generation",
+            "tableVersion": 1,
+            "label": "Hex site generation",
+            "purpose": "worldgen.site",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 51,
+              "totalWeight": 90
+            },
+            "selectedEntryId": "quiet",
+            "text": "Nothing of note."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2ab2c706-3c38-432f-9c71-767e1ac6e2e3",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 1,
+      "seq": 60,
+      "type": "session_started",
+      "schemaVersion": 1,
+      "worldTick": 0,
+      "recordedAt": "2026-09-26T16:13:36.042Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": null,
+      "causationId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "correlationId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "visibility": "public",
+      "payload": {
+        "characterName": "Wren",
+        "creatorPolicy": {
+          "tablePreview": true,
+          "completeHistory": true
+        },
+        "createdAt": "2026-09-26T16:13:36.042Z"
+      }
+    },
+    {
+      "id": "f32e15ce-103d-4f88-91ee-b122b7de8c00",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:0,0",
+      "streamVersion": 2,
+      "seq": 61,
+      "type": "hex_discovered",
+      "schemaVersion": 1,
+      "worldTick": 0,
+      "recordedAt": "2026-09-26T16:13:36.042Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 0,
+        "r": 0
+      },
+      "causationId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "correlationId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "visibility": "public",
+      "payload": {
+        "terrain": "plains"
+      }
+    },
+    {
+      "id": "129c45f4-bfe1-4d24-99da-0aefd326ce65",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 1,
+      "seq": 62,
+      "type": "hex_materialized",
+      "schemaVersion": 1,
+      "worldTick": 0,
+      "recordedAt": "2026-09-26T16:13:36.050Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "visibility": "system",
+      "payload": {
+        "terrain": "hills",
+        "tags": [
+          "terrain:hills"
+        ],
+        "sites": [],
+        "facts": [],
+        "contentRelease": "core@1.0.0",
+        "rolls": [
+          {
+            "tableId": "core/terrain-generation",
+            "tableVersion": 1,
+            "label": "Hex terrain generation",
+            "purpose": "worldgen.terrain",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 520,
+              "totalWeight": 630
+            },
+            "selectedEntryId": "hills",
+            "text": "Hills"
+          },
+          {
+            "tableId": "core/site-generation",
+            "tableVersion": 1,
+            "label": "Hex site generation",
+            "purpose": "worldgen.site",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 12,
+              "totalWeight": 90
+            },
+            "selectedEntryId": "quiet",
+            "text": "Nothing of note."
+          }
+        ]
+      }
+    },
+    {
+      "id": "847cb79e-7418-4190-877b-199031133f43",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 2,
+      "seq": 63,
+      "type": "time_advanced",
+      "schemaVersion": 1,
+      "worldTick": 0,
+      "recordedAt": "2026-09-26T16:13:36.050Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "visibility": "public",
+      "payload": {
+        "fromTick": 0,
+        "toTick": 2,
+        "cost": 2,
+        "reason": "travel"
+      }
+    },
+    {
+      "id": "fac564bd-5c4d-47dc-a65a-f78868106361",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 3,
+      "seq": 64,
+      "type": "character_moved",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.050Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "visibility": "public",
+      "payload": {
+        "from": {
+          "q": 0,
+          "r": 0
+        },
+        "to": {
+          "q": 1,
+          "r": 0
+        },
+        "cost": 2,
+        "terrain": "hills"
+      }
+    },
+    {
+      "id": "8470b4df-e325-47e1-bf1e-9fc7778a19db",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 2,
+      "seq": 65,
+      "type": "hex_discovered",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.050Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "visibility": "public",
+      "payload": {
+        "terrain": "hills"
+      }
+    },
+    {
+      "id": "87cd4383-86c2-4e57-84ca-df4e28ae5adb",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 3,
+      "seq": 66,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.050Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "visibility": "public",
+      "payload": {
+        "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+      }
+    },
+    {
+      "id": "7ece45f5-1af8-4782-9b90-85be8ad86913",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 4,
+      "seq": 67,
+      "type": "encounter_started",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.050Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "visibility": "public",
+      "payload": {
+        "encounterId": "ad9a171d-fc20-4827-9fe8-b237d5504bc9",
+        "tableId": "core/travel-encounter",
+        "tableVersion": 1,
+        "text": "Bandits burst from cover, weapons drawn, demanding your coin!",
+        "choices": [
+          {
+            "id": "fight",
+            "label": "Fight them off",
+            "table": {
+              "id": "core/bandit-fight",
+              "version": 1
+            },
+            "presentation": "battlefield"
+          },
+          {
+            "id": "flee",
+            "label": "Flee into the wilds",
+            "table": {
+              "id": "core/bandit-flee",
+              "version": 1
+            }
+          },
+          {
+            "id": "bargain",
+            "label": "Try to bargain",
+            "table": {
+              "id": "core/bandit-bargain",
+              "version": 1
+            }
+          }
+        ],
+        "startedTick": 2,
+        "hex": {
+          "q": 1,
+          "r": 0
+        },
+        "asset": "icon:bandits",
+        "assetLabel": "Bandits",
+        "entryId": "bandit-ambush"
+      }
+    },
+    {
+      "id": "7e41ab1b-bcae-4553-8071-0a21b1c5e9ea",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 5,
+      "seq": 68,
+      "type": "encounter_resolved",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.057Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "visibility": "public",
+      "payload": {
+        "encounterId": "ad9a171d-fc20-4827-9fe8-b237d5504bc9",
+        "choiceId": "fight",
+        "choiceLabel": "Fight them off",
+        "table": "core/bandit-fight@1",
+        "text": [
+          "You drive off the bandits; their dead lie among the stones."
+        ]
+      }
+    },
+    {
+      "id": "7d19625c-872f-438c-804f-8158a76ef7d8",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 4,
+      "seq": 69,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.057Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "visibility": "public",
+      "payload": {
+        "text": "You drive off the bandits; their dead lie among the stones."
+      }
+    },
+    {
+      "id": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 5,
+      "seq": 70,
+      "type": "fact_created",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.057Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "visibility": "public",
+      "payload": {
+        "id": "7458d384-c2eb-4c7c-b897-5867539b2b88",
+        "category": "remains",
+        "tags": [
+          "bandit",
+          "fresh",
+          "lootable"
+        ],
+        "data": {
+          "count": 2,
+          "origin": "bandit_ambush"
+        },
+        "persistence": {
+          "mode": "evolves",
+          "procedure": "core/remains-evolution@1"
+        }
+      }
+    },
+    {
+      "id": "c4101463-8d41-4729-ae98-498a93041552",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 6,
+      "seq": 71,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.057Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "visibility": "public",
+      "payload": {
+        "text": "Left to rot, the fallen may attract worse things."
+      }
+    },
+    {
+      "id": "795f46c5-be50-491c-bbb9-82cf7b61177b",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,0",
+      "streamVersion": 1,
+      "seq": 72,
+      "type": "hex_materialized",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.068Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "visibility": "system",
+      "payload": {
+        "terrain": "forest",
+        "tags": [
+          "terrain:forest"
+        ],
+        "sites": [],
+        "facts": [],
+        "contentRelease": "core@1.0.0",
+        "rolls": [
+          {
+            "tableId": "core/terrain-generation",
+            "tableVersion": 1,
+            "label": "Hex terrain generation",
+            "purpose": "worldgen.terrain",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 713,
+              "totalWeight": 1261
+            },
+            "selectedEntryId": "forest",
+            "text": "Forest"
+          },
+          {
+            "tableId": "core/site-generation",
+            "tableVersion": 1,
+            "label": "Hex site generation",
+            "purpose": "worldgen.site",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 39,
+              "totalWeight": 90
+            },
+            "selectedEntryId": "quiet",
+            "text": "Nothing of note."
+          }
+        ]
+      }
+    },
+    {
+      "id": "d38f168d-ba58-406d-9e1b-36b6545d7f56",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 6,
+      "seq": 73,
+      "type": "time_advanced",
+      "schemaVersion": 1,
+      "worldTick": 2,
+      "recordedAt": "2026-09-26T16:13:36.068Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "visibility": "public",
+      "payload": {
+        "fromTick": 2,
+        "toTick": 4,
+        "cost": 2,
+        "reason": "travel"
+      }
+    },
+    {
+      "id": "c873eae4-38ad-44b7-aaa5-c93829dcddcb",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 7,
+      "seq": 74,
+      "type": "character_moved",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.068Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "visibility": "public",
+      "payload": {
+        "from": {
+          "q": 1,
+          "r": 0
+        },
+        "to": {
+          "q": 2,
+          "r": 0
+        },
+        "cost": 2,
+        "terrain": "forest"
+      }
+    },
+    {
+      "id": "29b857c0-4e03-4b11-b808-25b7458f62ce",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,0",
+      "streamVersion": 2,
+      "seq": 75,
+      "type": "hex_discovered",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.068Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "visibility": "public",
+      "payload": {
+        "terrain": "forest"
+      }
+    },
+    {
+      "id": "a7c29b4e-fcbf-41c6-81c8-b5946d85c12d",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,0",
+      "streamVersion": 3,
+      "seq": 76,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.068Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "visibility": "public",
+      "payload": {
+        "text": "Strange signs cross your path."
+      }
+    },
+    {
+      "id": "ab8684c7-9916-4986-a842-b9411401a167",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,0",
+      "streamVersion": 4,
+      "seq": 77,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.068Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "visibility": "public",
+      "payload": {
+        "text": "Distant thunder rolls across the hills."
+      }
+    },
+    {
+      "id": "2a8098c3-3a27-4c02-9f7c-dec0032f2051",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,-1",
+      "streamVersion": 1,
+      "seq": 78,
+      "type": "hex_materialized",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.080Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": -1
+      },
+      "causationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+      "correlationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+      "visibility": "system",
+      "payload": {
+        "terrain": "water",
+        "tags": [
+          "terrain:water"
+        ],
+        "sites": [],
+        "facts": [],
+        "contentRelease": "core@1.0.0",
+        "rolls": [
+          {
+            "tableId": "core/terrain-generation",
+            "tableVersion": 1,
+            "label": "Hex terrain generation",
+            "purpose": "worldgen.terrain",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 56,
+              "totalWeight": 135
+            },
+            "selectedEntryId": "water",
+            "text": "Water"
+          },
+          {
+            "tableId": "core/site-generation",
+            "tableVersion": 1,
+            "label": "Hex site generation",
+            "purpose": "worldgen.site",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 17,
+              "totalWeight": 55
+            },
+            "selectedEntryId": "quiet",
+            "text": "Nothing of note."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2bb9865f-638b-45ea-bcc1-300663a6ebf8",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,-1",
+      "streamVersion": 2,
+      "seq": 79,
+      "type": "hex_discovered",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.080Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": -1
+      },
+      "causationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+      "correlationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+      "visibility": "public",
+      "payload": {
+        "terrain": "water"
+      }
+    },
+    {
+      "id": "75f75439-6975-484f-b5e7-437689a80036",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,-1",
+      "streamVersion": 3,
+      "seq": 80,
+      "type": "travel_blocked",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.080Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 2,
+        "r": -1
+      },
+      "causationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+      "correlationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+      "visibility": "public",
+      "payload": {
+        "terrain": "water",
+        "reason": "Water is impassable"
+      }
+    },
+    {
+      "id": "8dd6d6c1-a93f-44ed-8dee-a438407a8a86",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 8,
+      "seq": 81,
+      "type": "time_advanced",
+      "schemaVersion": 1,
+      "worldTick": 4,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "fromTick": 4,
+        "toTick": 6,
+        "cost": 2,
+        "reason": "travel"
+      }
+    },
+    {
+      "id": "f32a4f09-c989-4a1e-95cc-cf93d0853ffe",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "streamVersion": 9,
+      "seq": 82,
+      "type": "character_moved",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "from": {
+          "q": 2,
+          "r": 0
+        },
+        "to": {
+          "q": 1,
+          "r": 0
+        },
+        "cost": 2,
+        "terrain": "hills"
+      }
+    },
+    {
+      "id": "08c05146-a165-4a9d-81ac-4bf4653297ac",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 7,
+      "seq": 83,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "text": "The way is quiet. Nothing troubles the journey."
+      }
+    },
+    {
+      "id": "4aa5da96-b4f5-4a1b-bb19-4b6ce2012b8f",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 8,
+      "seq": 84,
+      "type": "evolution_evaluated",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "system",
+      "payload": {
+        "factId": "7458d384-c2eb-4c7c-b897-5867539b2b88",
+        "category": "remains",
+        "rule": "core/remains-evolution@1",
+        "band": 0,
+        "table": "core/remains-fresh@1",
+        "rolls": [
+          {
+            "tableId": "core/remains-fresh",
+            "tableVersion": 1,
+            "label": "Fresh remains (elapsed 0-2 ticks)",
+            "purpose": "evolution.remains.fresh",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 6,
+              "totalWeight": 10
+            },
+            "selectedEntryId": "undisturbed",
+            "text": "The remains lie undisturbed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "e5bd8e00-00ee-4016-ad4c-75f53075806d",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 9,
+      "seq": 85,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "text": "The remains lie undisturbed."
+      }
+    },
+    {
+      "id": "8b4e8c5e-291f-4f10-a84e-a7218ae8ba22",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 10,
+      "seq": 86,
+      "type": "evolution_evaluated",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "system",
+      "payload": {
+        "factId": "7458d384-c2eb-4c7c-b897-5867539b2b88",
+        "category": "remains",
+        "rule": "core/remains-evolution@1",
+        "band": 1,
+        "table": "core/remains-ripe@1",
+        "rolls": [
+          {
+            "tableId": "core/remains-ripe",
+            "tableVersion": 1,
+            "label": "Ripening remains (elapsed 3-7 ticks)",
+            "purpose": "evolution.remains.ripe",
+            "depth": 0,
+            "selection": {
+              "mode": "weighted",
+              "roll": 3,
+              "totalWeight": 10
+            },
+            "selectedEntryId": "scavengers",
+            "text": "Scavengers have been at the remains; little of value is left."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cd8a1438-d7f8-4ff7-b8a4-0829a5769204",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 11,
+      "seq": 87,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "text": "Scavengers have been at the remains; little of value is left."
+      }
+    },
+    {
+      "id": "81a6fea3-1d7f-421f-a521-ee6ed69fee85",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 12,
+      "seq": 88,
+      "type": "fact_superseded",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.100Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "factId": "7458d384-c2eb-4c7c-b897-5867539b2b88",
+        "category": "remains",
+        "successor": {
+          "id": "0041d08f-44eb-5d71-a2f4-d6060ada867b",
+          "category": "scavenged_remains",
+          "tags": [
+            "scavenged",
+            "bones"
+          ],
+          "data": {
+            "count": 2,
+            "origin": "bandit_ambush"
+          },
+          "status": "active",
+          "createdTick": 2,
+          "createdBy": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+          "evaluatedBands": [
+            0,
+            1
+          ],
+          "persistence": {
+            "mode": "permanent"
+          }
+        }
+      }
+    },
+    {
+      "id": "8ef587ec-d3b5-4feb-bd9b-90c80ac9d033",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 13,
+      "seq": 89,
+      "type": "fact_created",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.101Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "id": "9f422843-f6b9-5d06-b1ec-5a46106a26f8",
+        "category": "scavenger_activity",
+        "tags": [
+          "scavengers",
+          "active"
+        ],
+        "data": {
+          "drawn": "remains"
+        },
+        "persistence": {
+          "mode": "permanent"
+        }
+      }
+    },
+    {
+      "id": "1b9481f5-8d86-4cc8-b715-d04a5a272178",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+      "streamVersion": 14,
+      "seq": 90,
+      "type": "log_appended",
+      "schemaVersion": 1,
+      "worldTick": 6,
+      "recordedAt": "2026-09-26T16:13:36.101Z",
+      "actor": {
+        "type": "character",
+        "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+      },
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "visibility": "public",
+      "payload": {
+        "text": "Tracks and feathers mark a busy feast."
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "sessionId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "commandType": "travel",
+      "commandHash": "24821c6986629f7530484f8fe8eda9dc29dc4410824b2d17a55785e42e41614a",
+      "seed": "fixture-6|travel|1,0|0",
+      "worldTick": 2,
+      "rolls": [
+        {
+          "tableId": "core/terrain-generation",
+          "tableVersion": 1,
+          "label": "Hex terrain generation",
+          "purpose": "worldgen.terrain",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 520,
+            "totalWeight": 630
+          },
+          "selectedEntryId": "hills",
+          "text": "Hills"
+        },
+        {
+          "tableId": "core/site-generation",
+          "tableVersion": 1,
+          "label": "Hex site generation",
+          "purpose": "worldgen.site",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 12,
+            "totalWeight": 90
+          },
+          "selectedEntryId": "quiet",
+          "text": "Nothing of note."
+        },
+        {
+          "tableId": "core/travel-encounter",
+          "tableVersion": 1,
+          "label": "Travel encounter",
+          "purpose": "travel.encounter",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 58,
+            "totalWeight": 100
+          },
+          "selectedEntryId": "bandit-ambush",
+          "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+        }
+      ],
+      "eventIds": [
+        "129c45f4-bfe1-4d24-99da-0aefd326ce65",
+        "847cb79e-7418-4190-877b-199031133f43",
+        "fac564bd-5c4d-47dc-a65a-f78868106361",
+        "8470b4df-e325-47e1-bf1e-9fc7778a19db",
+        "87cd4383-86c2-4e57-84ca-df4e28ae5adb",
+        "7ece45f5-1af8-4782-9b90-85be8ad86913"
+      ],
+      "outcome": "encounter",
+      "idempotencyKey": "fixture-t1",
+      "response": {
+        "resolution": {
+          "id": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+          "command": "travel",
+          "outcome": "encounter",
+          "worldTick": 2,
+          "text": [
+            "You travel to the hills (1,0).",
+            "Bandits burst from cover, weapons drawn, demanding your coin!"
+          ],
+          "rolls": [
+            {
+              "tableId": "core/terrain-generation",
+              "tableVersion": 1,
+              "label": "Hex terrain generation",
+              "purpose": "worldgen.terrain",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 520,
+                "totalWeight": 630
+              },
+              "selectedEntryId": "hills",
+              "text": "Hills"
+            },
+            {
+              "tableId": "core/site-generation",
+              "tableVersion": 1,
+              "label": "Hex site generation",
+              "purpose": "worldgen.site",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 12,
+                "totalWeight": 90
+              },
+              "selectedEntryId": "quiet",
+              "text": "Nothing of note."
+            },
+            {
+              "tableId": "core/travel-encounter",
+              "tableVersion": 1,
+              "label": "Travel encounter",
+              "purpose": "travel.encounter",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 58,
+                "totalWeight": 100
+              },
+              "selectedEntryId": "bandit-ambush",
+              "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+            }
+          ],
+          "events": [
+            {
+              "id": "847cb79e-7418-4190-877b-199031133f43",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 2,
+              "seq": 63,
+              "type": "time_advanced",
+              "schemaVersion": 1,
+              "worldTick": 0,
+              "recordedAt": "2026-09-26T16:13:36.050Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "visibility": "public",
+              "payload": {
+                "fromTick": 0,
+                "toTick": 2,
+                "cost": 2,
+                "reason": "travel"
+              }
+            },
+            {
+              "id": "fac564bd-5c4d-47dc-a65a-f78868106361",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 3,
+              "seq": 64,
+              "type": "character_moved",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.050Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "visibility": "public",
+              "payload": {
+                "from": {
+                  "q": 0,
+                  "r": 0
+                },
+                "to": {
+                  "q": 1,
+                  "r": 0
+                },
+                "cost": 2,
+                "terrain": "hills"
+              }
+            },
+            {
+              "id": "8470b4df-e325-47e1-bf1e-9fc7778a19db",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 2,
+              "seq": 65,
+              "type": "hex_discovered",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.050Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "visibility": "public",
+              "payload": {
+                "terrain": "hills"
+              }
+            },
+            {
+              "id": "87cd4383-86c2-4e57-84ca-df4e28ae5adb",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 3,
+              "seq": 66,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.050Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "visibility": "public",
+              "payload": {
+                "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+              }
+            },
+            {
+              "id": "7ece45f5-1af8-4782-9b90-85be8ad86913",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 4,
+              "seq": 67,
+              "type": "encounter_started",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.050Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "correlationId": "fcb67880-1dfa-4431-aff4-2092d5de1472",
+              "visibility": "public",
+              "payload": {
+                "encounterId": "ad9a171d-fc20-4827-9fe8-b237d5504bc9",
+                "tableId": "core/travel-encounter",
+                "tableVersion": 1,
+                "text": "Bandits burst from cover, weapons drawn, demanding your coin!",
+                "choices": [
+                  {
+                    "id": "fight",
+                    "label": "Fight them off",
+                    "table": {
+                      "id": "core/bandit-fight",
+                      "version": 1
+                    },
+                    "presentation": "battlefield"
+                  },
+                  {
+                    "id": "flee",
+                    "label": "Flee into the wilds",
+                    "table": {
+                      "id": "core/bandit-flee",
+                      "version": 1
+                    }
+                  },
+                  {
+                    "id": "bargain",
+                    "label": "Try to bargain",
+                    "table": {
+                      "id": "core/bandit-bargain",
+                      "version": 1
+                    }
+                  }
+                ],
+                "startedTick": 2,
+                "hex": {
+                  "q": 1,
+                  "r": 0
+                },
+                "asset": "icon:bandits",
+                "assetLabel": "Bandits",
+                "entryId": "bandit-ambush"
+              }
+            }
+          ]
+        },
+        "session": {
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+          "version": 1,
+          "position": {
+            "q": 1,
+            "r": 0
+          },
+          "pendingEncounter": {
+            "encounterId": "ad9a171d-fc20-4827-9fe8-b237d5504bc9",
+            "tableId": "core/travel-encounter",
+            "tableVersion": 1,
+            "text": "Bandits burst from cover, weapons drawn, demanding your coin!",
+            "choices": [
+              {
+                "id": "fight",
+                "label": "Fight them off",
+                "table": {
+                  "id": "core/bandit-fight",
+                  "version": 1
+                },
+                "presentation": "battlefield"
+              },
+              {
+                "id": "flee",
+                "label": "Flee into the wilds",
+                "table": {
+                  "id": "core/bandit-flee",
+                  "version": 1
+                }
+              },
+              {
+                "id": "bargain",
+                "label": "Try to bargain",
+                "table": {
+                  "id": "core/bandit-bargain",
+                  "version": 1
+                }
+              }
+            ],
+            "startedTick": 2,
+            "hex": {
+              "q": 1,
+              "r": 0
+            },
+            "asset": "icon:bandits",
+            "assetLabel": "Bandits"
+          }
+        },
+        "worldTick": 2
+      },
+      "createdAt": "2026-09-26T16:13:36.051Z"
+    },
+    {
+      "id": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "sessionId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "commandType": "encounter-action",
+      "commandHash": "effbd36ce825bb85eb96ac33681167ab47364c29d676e0556fbf07f4037eed06",
+      "seed": "fixture-6|encounter-action|fight|1",
+      "worldTick": 2,
+      "rolls": [
+        {
+          "tableId": "core/bandit-fight",
+          "tableVersion": 1,
+          "label": "Fighting the bandits",
+          "purpose": "encounter.bandit.fight",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 6,
+            "totalWeight": 11
+          },
+          "selectedEntryId": "victory",
+          "text": "You drive off the bandits; their dead lie among the stones."
+        }
+      ],
+      "eventIds": [
+        "7e41ab1b-bcae-4553-8071-0a21b1c5e9ea",
+        "7d19625c-872f-438c-804f-8158a76ef7d8",
+        "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+        "c4101463-8d41-4729-ae98-498a93041552"
+      ],
+      "outcome": "resolved",
+      "idempotencyKey": "fixture-a1",
+      "response": {
+        "resolution": {
+          "id": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+          "command": "encounter-action",
+          "outcome": "resolved",
+          "worldTick": 2,
+          "text": [
+            "You drive off the bandits; their dead lie among the stones."
+          ],
+          "rolls": [
+            {
+              "tableId": "core/bandit-fight",
+              "tableVersion": 1,
+              "label": "Fighting the bandits",
+              "purpose": "encounter.bandit.fight",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 6,
+                "totalWeight": 11
+              },
+              "selectedEntryId": "victory",
+              "text": "You drive off the bandits; their dead lie among the stones."
+            }
+          ],
+          "events": [
+            {
+              "id": "7e41ab1b-bcae-4553-8071-0a21b1c5e9ea",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 5,
+              "seq": 68,
+              "type": "encounter_resolved",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.057Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "visibility": "public",
+              "payload": {
+                "encounterId": "ad9a171d-fc20-4827-9fe8-b237d5504bc9",
+                "choiceId": "fight",
+                "choiceLabel": "Fight them off",
+                "table": "core/bandit-fight@1",
+                "text": [
+                  "You drive off the bandits; their dead lie among the stones."
+                ]
+              }
+            },
+            {
+              "id": "7d19625c-872f-438c-804f-8158a76ef7d8",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 4,
+              "seq": 69,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.057Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "visibility": "public",
+              "payload": {
+                "text": "You drive off the bandits; their dead lie among the stones."
+              }
+            },
+            {
+              "id": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 5,
+              "seq": 70,
+              "type": "fact_created",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.057Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "visibility": "public",
+              "payload": {
+                "id": "7458d384-c2eb-4c7c-b897-5867539b2b88",
+                "category": "remains",
+                "tags": [
+                  "bandit",
+                  "fresh",
+                  "lootable"
+                ],
+                "data": {
+                  "count": 2,
+                  "origin": "bandit_ambush"
+                },
+                "persistence": {
+                  "mode": "evolves",
+                  "procedure": "core/remains-evolution@1"
+                }
+              }
+            },
+            {
+              "id": "c4101463-8d41-4729-ae98-498a93041552",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 6,
+              "seq": 71,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.057Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "correlationId": "b647dac2-63d6-41ea-8a1a-732d526729d0",
+              "visibility": "public",
+              "payload": {
+                "text": "Left to rot, the fallen may attract worse things."
+              }
+            }
+          ]
+        },
+        "session": {
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+          "version": 2,
+          "position": {
+            "q": 1,
+            "r": 0
+          },
+          "pendingEncounter": null
+        },
+        "worldTick": 2
+      },
+      "createdAt": "2026-09-26T16:13:36.058Z"
+    },
+    {
+      "id": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "sessionId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "commandType": "travel",
+      "commandHash": "9ee1bc7c24be7556225f6708ff7904d8fbbf0ce5158a41ccae03bf29a47ebfc8",
+      "seed": "fixture-6|travel|2,0|2",
+      "worldTick": 4,
+      "rolls": [
+        {
+          "tableId": "core/terrain-generation",
+          "tableVersion": 1,
+          "label": "Hex terrain generation",
+          "purpose": "worldgen.terrain",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 713,
+            "totalWeight": 1261
+          },
+          "selectedEntryId": "forest",
+          "text": "Forest"
+        },
+        {
+          "tableId": "core/site-generation",
+          "tableVersion": 1,
+          "label": "Hex site generation",
+          "purpose": "worldgen.site",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 39,
+            "totalWeight": 90
+          },
+          "selectedEntryId": "quiet",
+          "text": "Nothing of note."
+        },
+        {
+          "tableId": "core/travel-encounter",
+          "tableVersion": 1,
+          "label": "Travel encounter",
+          "purpose": "travel.encounter",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 99,
+            "totalWeight": 100
+          },
+          "selectedEntryId": "strange-omens",
+          "text": "Strange signs cross your path."
+        },
+        {
+          "tableId": "core/omens",
+          "tableVersion": 1,
+          "label": "Omens",
+          "purpose": "travel.omen",
+          "depth": 1,
+          "selection": {
+            "mode": "dice",
+            "expr": "2d6",
+            "dice": [
+              5,
+              1
+            ],
+            "total": 6
+          },
+          "selectedEntryId": "far-thunder",
+          "text": "Distant thunder rolls across the hills."
+        }
+      ],
+      "eventIds": [
+        "795f46c5-be50-491c-bbb9-82cf7b61177b",
+        "d38f168d-ba58-406d-9e1b-36b6545d7f56",
+        "c873eae4-38ad-44b7-aaa5-c93829dcddcb",
+        "29b857c0-4e03-4b11-b808-25b7458f62ce",
+        "a7c29b4e-fcbf-41c6-81c8-b5946d85c12d",
+        "ab8684c7-9916-4986-a842-b9411401a167"
+      ],
+      "outcome": "moved",
+      "idempotencyKey": "fixture-w1",
+      "response": {
+        "resolution": {
+          "id": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+          "command": "travel",
+          "outcome": "moved",
+          "worldTick": 4,
+          "text": [
+            "You travel to the forest (2,0).",
+            "Strange signs cross your path.",
+            "Distant thunder rolls across the hills."
+          ],
+          "rolls": [
+            {
+              "tableId": "core/terrain-generation",
+              "tableVersion": 1,
+              "label": "Hex terrain generation",
+              "purpose": "worldgen.terrain",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 713,
+                "totalWeight": 1261
+              },
+              "selectedEntryId": "forest",
+              "text": "Forest"
+            },
+            {
+              "tableId": "core/site-generation",
+              "tableVersion": 1,
+              "label": "Hex site generation",
+              "purpose": "worldgen.site",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 39,
+                "totalWeight": 90
+              },
+              "selectedEntryId": "quiet",
+              "text": "Nothing of note."
+            },
+            {
+              "tableId": "core/travel-encounter",
+              "tableVersion": 1,
+              "label": "Travel encounter",
+              "purpose": "travel.encounter",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 99,
+                "totalWeight": 100
+              },
+              "selectedEntryId": "strange-omens",
+              "text": "Strange signs cross your path."
+            },
+            {
+              "tableId": "core/omens",
+              "tableVersion": 1,
+              "label": "Omens",
+              "purpose": "travel.omen",
+              "depth": 1,
+              "selection": {
+                "mode": "dice",
+                "expr": "2d6",
+                "dice": [
+                  5,
+                  1
+                ],
+                "total": 6
+              },
+              "selectedEntryId": "far-thunder",
+              "text": "Distant thunder rolls across the hills."
+            }
+          ],
+          "events": [
+            {
+              "id": "d38f168d-ba58-406d-9e1b-36b6545d7f56",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 6,
+              "seq": 73,
+              "type": "time_advanced",
+              "schemaVersion": 1,
+              "worldTick": 2,
+              "recordedAt": "2026-09-26T16:13:36.068Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 2,
+                "r": 0
+              },
+              "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "visibility": "public",
+              "payload": {
+                "fromTick": 2,
+                "toTick": 4,
+                "cost": 2,
+                "reason": "travel"
+              }
+            },
+            {
+              "id": "c873eae4-38ad-44b7-aaa5-c93829dcddcb",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 7,
+              "seq": 74,
+              "type": "character_moved",
+              "schemaVersion": 1,
+              "worldTick": 4,
+              "recordedAt": "2026-09-26T16:13:36.068Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 2,
+                "r": 0
+              },
+              "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "visibility": "public",
+              "payload": {
+                "from": {
+                  "q": 1,
+                  "r": 0
+                },
+                "to": {
+                  "q": 2,
+                  "r": 0
+                },
+                "cost": 2,
+                "terrain": "forest"
+              }
+            },
+            {
+              "id": "29b857c0-4e03-4b11-b808-25b7458f62ce",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,0",
+              "streamVersion": 2,
+              "seq": 75,
+              "type": "hex_discovered",
+              "schemaVersion": 1,
+              "worldTick": 4,
+              "recordedAt": "2026-09-26T16:13:36.068Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 2,
+                "r": 0
+              },
+              "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "visibility": "public",
+              "payload": {
+                "terrain": "forest"
+              }
+            },
+            {
+              "id": "a7c29b4e-fcbf-41c6-81c8-b5946d85c12d",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,0",
+              "streamVersion": 3,
+              "seq": 76,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 4,
+              "recordedAt": "2026-09-26T16:13:36.068Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 2,
+                "r": 0
+              },
+              "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "visibility": "public",
+              "payload": {
+                "text": "Strange signs cross your path."
+              }
+            },
+            {
+              "id": "ab8684c7-9916-4986-a842-b9411401a167",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,0",
+              "streamVersion": 4,
+              "seq": 77,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 4,
+              "recordedAt": "2026-09-26T16:13:36.068Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 2,
+                "r": 0
+              },
+              "causationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "correlationId": "54130dbc-c133-4c76-9bc3-92306f6ca7f4",
+              "visibility": "public",
+              "payload": {
+                "text": "Distant thunder rolls across the hills."
+              }
+            }
+          ]
+        },
+        "session": {
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+          "version": 3,
+          "position": {
+            "q": 2,
+            "r": 0
+          },
+          "pendingEncounter": null
+        },
+        "worldTick": 4
+      },
+      "createdAt": "2026-09-26T16:13:36.069Z"
+    },
+    {
+      "id": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "sessionId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "commandType": "travel",
+      "commandHash": "f69ab5b98e5c0e5a378558e3eeb1a28c1aba3b4c4b807d14f9ee3bcceaaba1a9",
+      "seed": "fixture-6|travel|2,-1|3",
+      "worldTick": 4,
+      "rolls": [
+        {
+          "tableId": "core/terrain-generation",
+          "tableVersion": 1,
+          "label": "Hex terrain generation",
+          "purpose": "worldgen.terrain",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 56,
+            "totalWeight": 135
+          },
+          "selectedEntryId": "water",
+          "text": "Water"
+        },
+        {
+          "tableId": "core/site-generation",
+          "tableVersion": 1,
+          "label": "Hex site generation",
+          "purpose": "worldgen.site",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 17,
+            "totalWeight": 55
+          },
+          "selectedEntryId": "quiet",
+          "text": "Nothing of note."
+        }
+      ],
+      "eventIds": [
+        "2a8098c3-3a27-4c02-9f7c-dec0032f2051",
+        "2bb9865f-638b-45ea-bcc1-300663a6ebf8",
+        "75f75439-6975-484f-b5e7-437689a80036"
+      ],
+      "outcome": "blocked",
+      "idempotencyKey": "fixture-w2",
+      "response": {
+        "resolution": {
+          "id": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+          "command": "travel",
+          "outcome": "blocked",
+          "worldTick": 4,
+          "text": [
+            "Water bars the way; you cannot pass."
+          ],
+          "rolls": [
+            {
+              "tableId": "core/terrain-generation",
+              "tableVersion": 1,
+              "label": "Hex terrain generation",
+              "purpose": "worldgen.terrain",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 56,
+                "totalWeight": 135
+              },
+              "selectedEntryId": "water",
+              "text": "Water"
+            },
+            {
+              "tableId": "core/site-generation",
+              "tableVersion": 1,
+              "label": "Hex site generation",
+              "purpose": "worldgen.site",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 17,
+                "totalWeight": 55
+              },
+              "selectedEntryId": "quiet",
+              "text": "Nothing of note."
+            }
+          ],
+          "events": [
+            {
+              "id": "2bb9865f-638b-45ea-bcc1-300663a6ebf8",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,-1",
+              "streamVersion": 2,
+              "seq": 79,
+              "type": "hex_discovered",
+              "schemaVersion": 1,
+              "worldTick": 4,
+              "recordedAt": "2026-09-26T16:13:36.080Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 2,
+                "r": -1
+              },
+              "causationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+              "correlationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+              "visibility": "public",
+              "payload": {
+                "terrain": "water"
+              }
+            },
+            {
+              "id": "75f75439-6975-484f-b5e7-437689a80036",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:2,-1",
+              "streamVersion": 3,
+              "seq": 80,
+              "type": "travel_blocked",
+              "schemaVersion": 1,
+              "worldTick": 4,
+              "recordedAt": "2026-09-26T16:13:36.080Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 2,
+                "r": -1
+              },
+              "causationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+              "correlationId": "0c582aa5-2e03-494a-a45a-1fe3324de468",
+              "visibility": "public",
+              "payload": {
+                "terrain": "water",
+                "reason": "Water is impassable"
+              }
+            }
+          ]
+        },
+        "session": {
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+          "version": 4,
+          "position": {
+            "q": 2,
+            "r": 0
+          },
+          "pendingEncounter": null
+        },
+        "worldTick": 4
+      },
+      "createdAt": "2026-09-26T16:13:36.081Z"
+    },
+    {
+      "id": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+      "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+      "sessionId": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+      "commandType": "travel",
+      "commandHash": "24821c6986629f7530484f8fe8eda9dc29dc4410824b2d17a55785e42e41614a",
+      "seed": "fixture-6|travel|1,0|4",
+      "worldTick": 6,
+      "rolls": [
+        {
+          "tableId": "core/travel-encounter",
+          "tableVersion": 1,
+          "label": "Travel encounter",
+          "purpose": "travel.encounter",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 4,
+            "totalWeight": 100
+          },
+          "selectedEntryId": "quiet-road",
+          "text": "The way is quiet. Nothing troubles the journey."
+        },
+        {
+          "tableId": "core/remains-fresh",
+          "tableVersion": 1,
+          "label": "Fresh remains (elapsed 0-2 ticks)",
+          "purpose": "evolution.remains.fresh",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 6,
+            "totalWeight": 10
+          },
+          "selectedEntryId": "undisturbed",
+          "text": "The remains lie undisturbed."
+        },
+        {
+          "tableId": "core/remains-ripe",
+          "tableVersion": 1,
+          "label": "Ripening remains (elapsed 3-7 ticks)",
+          "purpose": "evolution.remains.ripe",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 3,
+            "totalWeight": 10
+          },
+          "selectedEntryId": "scavengers",
+          "text": "Scavengers have been at the remains; little of value is left."
+        }
+      ],
+      "eventIds": [
+        "8dd6d6c1-a93f-44ed-8dee-a438407a8a86",
+        "f32a4f09-c989-4a1e-95cc-cf93d0853ffe",
+        "08c05146-a165-4a9d-81ac-4bf4653297ac",
+        "4aa5da96-b4f5-4a1b-bb19-4b6ce2012b8f",
+        "e5bd8e00-00ee-4016-ad4c-75f53075806d",
+        "8b4e8c5e-291f-4f10-a84e-a7218ae8ba22",
+        "cd8a1438-d7f8-4ff7-b8a4-0829a5769204",
+        "81a6fea3-1d7f-421f-a521-ee6ed69fee85",
+        "8ef587ec-d3b5-4feb-bd9b-90c80ac9d033",
+        "1b9481f5-8d86-4cc8-b715-d04a5a272178"
+      ],
+      "outcome": "moved",
+      "idempotencyKey": "fixture-w5",
+      "response": {
+        "resolution": {
+          "id": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+          "command": "travel",
+          "outcome": "moved",
+          "worldTick": 6,
+          "text": [
+            "You travel to the hills (1,0).",
+            "The way is quiet. Nothing troubles the journey."
+          ],
+          "rolls": [
+            {
+              "tableId": "core/travel-encounter",
+              "tableVersion": 1,
+              "label": "Travel encounter",
+              "purpose": "travel.encounter",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 4,
+                "totalWeight": 100
+              },
+              "selectedEntryId": "quiet-road",
+              "text": "The way is quiet. Nothing troubles the journey."
+            },
+            {
+              "tableId": "core/remains-fresh",
+              "tableVersion": 1,
+              "label": "Fresh remains (elapsed 0-2 ticks)",
+              "purpose": "evolution.remains.fresh",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 6,
+                "totalWeight": 10
+              },
+              "selectedEntryId": "undisturbed",
+              "text": "The remains lie undisturbed."
+            },
+            {
+              "tableId": "core/remains-ripe",
+              "tableVersion": 1,
+              "label": "Ripening remains (elapsed 3-7 ticks)",
+              "purpose": "evolution.remains.ripe",
+              "depth": 0,
+              "selection": {
+                "mode": "weighted",
+                "roll": 3,
+                "totalWeight": 10
+              },
+              "selectedEntryId": "scavengers",
+              "text": "Scavengers have been at the remains; little of value is left."
+            }
+          ],
+          "events": [
+            {
+              "id": "8dd6d6c1-a93f-44ed-8dee-a438407a8a86",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 8,
+              "seq": 81,
+              "type": "time_advanced",
+              "schemaVersion": 1,
+              "worldTick": 4,
+              "recordedAt": "2026-09-26T16:13:36.100Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "fromTick": 4,
+                "toTick": 6,
+                "cost": 2,
+                "reason": "travel"
+              }
+            },
+            {
+              "id": "f32a4f09-c989-4a1e-95cc-cf93d0853ffe",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "session:5cf2e719-65d0-4de4-bc83-597cb816aee2",
+              "streamVersion": 9,
+              "seq": 82,
+              "type": "character_moved",
+              "schemaVersion": 1,
+              "worldTick": 6,
+              "recordedAt": "2026-09-26T16:13:36.100Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "from": {
+                  "q": 2,
+                  "r": 0
+                },
+                "to": {
+                  "q": 1,
+                  "r": 0
+                },
+                "cost": 2,
+                "terrain": "hills"
+              }
+            },
+            {
+              "id": "08c05146-a165-4a9d-81ac-4bf4653297ac",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 7,
+              "seq": 83,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 6,
+              "recordedAt": "2026-09-26T16:13:36.100Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "text": "The way is quiet. Nothing troubles the journey."
+              }
+            },
+            {
+              "id": "e5bd8e00-00ee-4016-ad4c-75f53075806d",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 9,
+              "seq": 85,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 6,
+              "recordedAt": "2026-09-26T16:13:36.100Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "text": "The remains lie undisturbed."
+              }
+            },
+            {
+              "id": "cd8a1438-d7f8-4ff7-b8a4-0829a5769204",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 11,
+              "seq": 87,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 6,
+              "recordedAt": "2026-09-26T16:13:36.100Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "text": "Scavengers have been at the remains; little of value is left."
+              }
+            },
+            {
+              "id": "81a6fea3-1d7f-421f-a521-ee6ed69fee85",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 12,
+              "seq": 88,
+              "type": "fact_superseded",
+              "schemaVersion": 1,
+              "worldTick": 6,
+              "recordedAt": "2026-09-26T16:13:36.100Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "factId": "7458d384-c2eb-4c7c-b897-5867539b2b88",
+                "category": "remains",
+                "successor": {
+                  "id": "0041d08f-44eb-5d71-a2f4-d6060ada867b",
+                  "category": "scavenged_remains",
+                  "tags": [
+                    "scavenged",
+                    "bones"
+                  ],
+                  "data": {
+                    "count": 2,
+                    "origin": "bandit_ambush"
+                  },
+                  "status": "active",
+                  "createdTick": 2,
+                  "createdBy": "cb00aca8-078a-4cf3-ba4d-d83ba622b851",
+                  "evaluatedBands": [
+                    0,
+                    1
+                  ],
+                  "persistence": {
+                    "mode": "permanent"
+                  }
+                }
+              }
+            },
+            {
+              "id": "8ef587ec-d3b5-4feb-bd9b-90c80ac9d033",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 13,
+              "seq": 89,
+              "type": "fact_created",
+              "schemaVersion": 1,
+              "worldTick": 6,
+              "recordedAt": "2026-09-26T16:13:36.101Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "id": "9f422843-f6b9-5d06-b1ec-5a46106a26f8",
+                "category": "scavenger_activity",
+                "tags": [
+                  "scavengers",
+                  "active"
+                ],
+                "data": {
+                  "drawn": "remains"
+                },
+                "persistence": {
+                  "mode": "permanent"
+                }
+              }
+            },
+            {
+              "id": "1b9481f5-8d86-4cc8-b715-d04a5a272178",
+              "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+              "streamId": "hex:8d73fd37-55f5-4cc2-af2e-90f109d3d12a:1,0",
+              "streamVersion": 14,
+              "seq": 90,
+              "type": "log_appended",
+              "schemaVersion": 1,
+              "worldTick": 6,
+              "recordedAt": "2026-09-26T16:13:36.101Z",
+              "actor": {
+                "type": "character",
+                "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2"
+              },
+              "location": {
+                "q": 1,
+                "r": 0
+              },
+              "causationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "correlationId": "df9ae3a0-89e9-4a79-ab96-abd65906d595",
+              "visibility": "public",
+              "payload": {
+                "text": "Tracks and feathers mark a busy feast."
+              }
+            }
+          ]
+        },
+        "session": {
+          "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+          "version": 5,
+          "position": {
+            "q": 1,
+            "r": 0
+          },
+          "pendingEncounter": null
+        },
+        "worldTick": 6
+      },
+      "createdAt": "2026-09-26T16:13:36.101Z"
+    }
+  ]
+}

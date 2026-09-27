@@ -1,0 +1,55 @@
+{
+  "$id": "worldforge/common.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Shared primitives",
+  "definitions": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "isoDateTime": { "type": "string", "format": "date-time" },
+    "axial": {
+      "type": "object",
+      "required": ["q", "r"],
+      "additionalProperties": false,
+      "properties": {
+        "q": { "type": "integer" },
+        "r": { "type": "integer" }
+      }
+    },
+    "error": {
+      "type": "object",
+      "required": ["error"],
+      "additionalProperties": false,
+      "properties": {
+        "error": {
+          "type": "object",
+          "required": ["code", "message", "requestId"],
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "enum": [
+                "validation_failed",
+                "not_found",
+                "version_conflict",
+                "command_rejected",
+                "content_version_missing",
+                "forbidden",
+                "internal_error"
+              ]
+            },
+            "message": { "type": "string" },
+            "requestId": { "type": "string" },
+            "details": true
+          }
+        }
+      }
+    },
+    "tableRef": {
+      "type": "object",
+      "required": ["id", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

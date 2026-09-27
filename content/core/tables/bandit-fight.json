@@ -1,0 +1,54 @@
+{
+  "id": "core/bandit-fight",
+  "version": 1,
+  "purpose": "encounter.bandit.fight",
+  "label": "Fighting the bandits",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    {
+      "id": "victory",
+      "weight": 6,
+      "result": {
+        "text": "You drive off the bandits; their dead lie among the stones.",
+        "effects": [
+          {
+            "type": "add_fact",
+            "category": "remains",
+            "tags": ["bandit", "fresh", "lootable"],
+            "data": { "count": 2, "origin": "bandit_ambush" },
+            "persistence": { "mode": "evolves", "procedure": "core/remains-evolution@1" }
+          },
+          { "type": "log", "text": "Left to rot, the fallen may attract worse things." }
+        ]
+      }
+    },
+    {
+      "id": "hard-victory",
+      "weight": 3,
+      "result": {
+        "text": "You win, but take an ugly cut doing it.",
+        "effects": [
+          {
+            "type": "add_fact",
+            "category": "remains",
+            "tags": ["bandit", "fresh", "lootable"],
+            "data": { "count": 1, "origin": "bandit_ambush" },
+            "persistence": { "mode": "evolves", "procedure": "core/remains-evolution@1" }
+          },
+          { "type": "log", "text": "You bind your wound and catch your breath." }
+        ]
+      }
+    },
+    {
+      "id": "driven-off",
+      "weight": 2,
+      "result": {
+        "text": "The bandits are too many; you barely break away!",
+        "effects": [
+          { "type": "log", "text": "Emboldened bandits now hold this ground." },
+          { "type": "add_fact", "category": "bandit_activity", "tags": ["bandits", "emboldened"], "data": {} }
+        ]
+      }
+    }
+  ]
+}

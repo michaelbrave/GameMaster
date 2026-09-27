@@ -1,0 +1,112 @@
+{
+  "tables": [
+    {
+      "id": "core/bandit-bargain",
+      "purpose": "encounter.bandit.bargain",
+      "label": "Bargaining with the bandits",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/bandit-fight",
+      "purpose": "encounter.bandit.fight",
+      "label": "Fighting the bandits",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/bandit-flee",
+      "purpose": "encounter.bandit.flee",
+      "label": "Fleeing the bandits",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/beast-fight",
+      "purpose": "encounter.beast.fight",
+      "label": "Fighting the beasts",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/beast-flee",
+      "purpose": "encounter.beast.flee",
+      "label": "Fleeing the beasts",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/omens",
+      "purpose": "travel.omen",
+      "label": "Omens",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/remains-fresh",
+      "purpose": "evolution.remains.fresh",
+      "label": "Fresh remains (elapsed 0-2 ticks)",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/remains-old",
+      "purpose": "evolution.remains.old",
+      "label": "Old remains (elapsed 8+ ticks)",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/remains-ripe",
+      "purpose": "evolution.remains.ripe",
+      "label": "Ripening remains (elapsed 3-7 ticks)",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/site-generation",
+      "purpose": "worldgen.site",
+      "label": "Hex site generation",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/terrain-generation",
+      "purpose": "worldgen.terrain",
+      "label": "Hex terrain generation",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    },
+    {
+      "id": "core/travel-encounter",
+      "purpose": "travel.encounter",
+      "label": "Travel encounter",
+      "versions": [
+        1
+      ],
+      "latestVersion": 1
+    }
+  ]
+}

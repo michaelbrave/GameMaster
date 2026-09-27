@@ -1,0 +1,18 @@
+{
+  "id": "core/beast-flee",
+  "version": 1,
+  "purpose": "encounter.beast.flee",
+  "label": "Fleeing the beasts",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    { "id": "clean", "weight": 6, "result": { "text": "You outrun the pack." } },
+    {
+      "id": "bitten",
+      "weight": 4,
+      "result": {
+        "text": "Jaws snap at your heels as you escape.",
+        "effects": [{ "type": "log", "text": "The bites sting, but you are whole enough to walk." }]
+      }
+    }
+  ]
+}

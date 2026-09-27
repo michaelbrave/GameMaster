@@ -1,0 +1,180 @@
+{
+  "resolution": {
+    "id": "ce293261-9564-4734-8eb3-390c0b447151",
+    "command": "travel",
+    "outcome": "moved",
+    "worldTick": 1,
+    "text": [
+      "You travel to the plains (1,0).",
+      "The way is quiet. Nothing troubles the journey."
+    ],
+    "rolls": [
+      {
+        "tableId": "core/terrain-generation",
+        "tableVersion": 1,
+        "label": "Hex terrain generation",
+        "purpose": "worldgen.terrain",
+        "depth": 0,
+        "selection": {
+          "mode": "weighted",
+          "roll": 65,
+          "totalWeight": 161
+        },
+        "selectedEntryId": "plains",
+        "text": "Plains"
+      },
+      {
+        "tableId": "core/site-generation",
+        "tableVersion": 1,
+        "label": "Hex site generation",
+        "purpose": "worldgen.site",
+        "depth": 0,
+        "selection": {
+          "mode": "weighted",
+          "roll": 70,
+          "totalWeight": 90
+        },
+        "selectedEntryId": "standing-stones",
+        "text": "A circle of standing stones."
+      },
+      {
+        "tableId": "core/travel-encounter",
+        "tableVersion": 1,
+        "label": "Travel encounter",
+        "purpose": "travel.encounter",
+        "depth": 0,
+        "selection": {
+          "mode": "weighted",
+          "roll": 50,
+          "totalWeight": 100
+        },
+        "selectedEntryId": "quiet-road",
+        "text": "The way is quiet. Nothing troubles the journey."
+      }
+    ],
+    "events": [
+      {
+        "id": "3fc9d744-203d-43d7-98f9-9daa44f1ae12",
+        "worldId": "d57d9ac4-d7da-4f09-a11d-e3141d127e26",
+        "streamId": "session:38cc740d-3b08-4276-a36c-4e1fce47eb68",
+        "streamVersion": 2,
+        "seq": 96,
+        "type": "time_advanced",
+        "schemaVersion": 1,
+        "worldTick": 0,
+        "recordedAt": "2026-09-26T16:13:36.197Z",
+        "actor": {
+          "type": "character",
+          "id": "38cc740d-3b08-4276-a36c-4e1fce47eb68"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "correlationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "visibility": "public",
+        "payload": {
+          "fromTick": 0,
+          "toTick": 1,
+          "cost": 1,
+          "reason": "travel"
+        }
+      },
+      {
+        "id": "35871ec1-de2a-4e24-bcaf-90af13da5171",
+        "worldId": "d57d9ac4-d7da-4f09-a11d-e3141d127e26",
+        "streamId": "session:38cc740d-3b08-4276-a36c-4e1fce47eb68",
+        "streamVersion": 3,
+        "seq": 97,
+        "type": "character_moved",
+        "schemaVersion": 1,
+        "worldTick": 1,
+        "recordedAt": "2026-09-26T16:13:36.197Z",
+        "actor": {
+          "type": "character",
+          "id": "38cc740d-3b08-4276-a36c-4e1fce47eb68"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "correlationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "visibility": "public",
+        "payload": {
+          "from": {
+            "q": 0,
+            "r": 0
+          },
+          "to": {
+            "q": 1,
+            "r": 0
+          },
+          "cost": 1,
+          "terrain": "plains"
+        }
+      },
+      {
+        "id": "9d6b02f3-af73-4f14-8cbc-5de32ed8c5ef",
+        "worldId": "d57d9ac4-d7da-4f09-a11d-e3141d127e26",
+        "streamId": "hex:d57d9ac4-d7da-4f09-a11d-e3141d127e26:1,0",
+        "streamVersion": 2,
+        "seq": 98,
+        "type": "hex_discovered",
+        "schemaVersion": 1,
+        "worldTick": 1,
+        "recordedAt": "2026-09-26T16:13:36.197Z",
+        "actor": {
+          "type": "character",
+          "id": "38cc740d-3b08-4276-a36c-4e1fce47eb68"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "correlationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "visibility": "public",
+        "payload": {
+          "terrain": "plains"
+        }
+      },
+      {
+        "id": "1f6ebede-bebe-490a-903d-33e6bae7a68a",
+        "worldId": "d57d9ac4-d7da-4f09-a11d-e3141d127e26",
+        "streamId": "hex:d57d9ac4-d7da-4f09-a11d-e3141d127e26:1,0",
+        "streamVersion": 3,
+        "seq": 99,
+        "type": "log_appended",
+        "schemaVersion": 1,
+        "worldTick": 1,
+        "recordedAt": "2026-09-26T16:13:36.197Z",
+        "actor": {
+          "type": "character",
+          "id": "38cc740d-3b08-4276-a36c-4e1fce47eb68"
+        },
+        "location": {
+          "q": 1,
+          "r": 0
+        },
+        "causationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "correlationId": "ce293261-9564-4734-8eb3-390c0b447151",
+        "visibility": "public",
+        "payload": {
+          "text": "The way is quiet. Nothing troubles the journey."
+        }
+      }
+    ]
+  },
+  "session": {
+    "id": "38cc740d-3b08-4276-a36c-4e1fce47eb68",
+    "version": 1,
+    "position": {
+      "q": 1,
+      "r": 0
+    },
+    "pendingEncounter": null
+  },
+  "worldTick": 1
+}

@@ -1,0 +1,50 @@
+{
+  "session": {
+    "id": "5cf2e719-65d0-4de4-bc83-597cb816aee2",
+    "worldId": "8d73fd37-55f5-4cc2-af2e-90f109d3d12a",
+    "characterName": "Wren",
+    "position": {
+      "q": 0,
+      "r": 0
+    },
+    "status": "active",
+    "version": 0,
+    "creatorPolicy": {
+      "tablePreview": true,
+      "completeHistory": true
+    },
+    "pendingEncounter": null,
+    "createdAt": "2026-09-26T16:13:36.042Z"
+  },
+  "worldTick": 0,
+  "worldName": "Fixture World",
+  "regionRadius": 2,
+  "gridType": "hex",
+  "reachable": [
+    {
+      "q": -1,
+      "r": 0
+    },
+    {
+      "q": -1,
+      "r": 1
+    },
+    {
+      "q": 0,
+      "r": -1
+    },
+    {
+      "q": 0,
+      "r": 1
+    },
+    {
+      "q": 1,
+      "r": -1
+    },
+    {
+      "q": 1,
+      "r": 0
+    }
+  ],
+  "discoveredCount": 1
+}

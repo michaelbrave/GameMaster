@@ -1,0 +1,15 @@
+{
+  "id": "core/terrain-generation",
+  "version": 1,
+  "purpose": "worldgen.terrain",
+  "label": "Hex terrain generation",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    { "id": "plains",    "weight": 30, "result": { "text": "Plains",    "tags": ["terrain:plains"] } },
+    { "id": "forest",    "weight": 24, "result": { "text": "Forest",    "tags": ["terrain:forest"] } },
+    { "id": "hills",     "weight": 16, "result": { "text": "Hills",     "tags": ["terrain:hills"] } },
+    { "id": "swamp",     "weight": 10, "result": { "text": "Swamp",     "tags": ["terrain:swamp"] } },
+    { "id": "mountains", "weight": 8,  "result": { "text": "Mountains", "tags": ["terrain:mountains"] } },
+    { "id": "water",     "weight": 12, "result": { "text": "Water",     "tags": ["terrain:water"] } }
+  ]
+}

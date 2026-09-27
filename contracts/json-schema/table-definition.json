@@ -1,0 +1,162 @@
+{
+  "$id": "worldforge/table-definition.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roll-table definition (versioned content)",
+  "type": "object",
+  "required": ["id", "version", "purpose", "label", "selection", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(/[a-z0-9-]+)+$" },
+    "version": { "type": "integer", "minimum": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "label": { "type": "string", "minLength": 1 },
+    "lifecycle": { "enum": ["draft", "published"] },
+    "selection": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["mode"],
+          "additionalProperties": false,
+          "properties": { "mode": { "const": "weighted" } }
+        },
+        {
+          "type": "object",
+          "required": ["mode", "dice"],
+          "additionalProperties": false,
+          "properties": {
+            "mode": { "const": "dice" },
+            "dice": { "type": "string", "pattern": "^\\d*d\\d+([+-]\\d+)?$" }
+          }
+        }
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/entry" }
+    }
+  },
+  "definitions": {
+    "tableRef": {
+      "type": "object",
+      "required": ["id", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "choice": {
+      "type": "object",
+      "required": ["id", "label", "table"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "table": { "$ref": "#/definitions/tableRef" },
+        "presentation": {
+          "description": "Presentation surface this choice opens, if any. Absent means the choice resolves inline as text.",
+          "enum": ["battlefield"]
+        }
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "required": ["mode"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "enum": ["permanent", "evolves"] },
+        "procedure": { "type": "string" }
+      }
+    },
+    "effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["type", "text"],
+          "additionalProperties": false,
+          "properties": { "type": { "const": "log" }, "text": { "type": "string" } }
+        },
+        {
+          "type": "object",
+          "required": ["type", "category"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "add_fact" },
+            "category": { "type": "string" },
+            "tags": { "type": "array", "items": { "type": "string" } },
+            "data": { "type": "object" },
+            "persistence": { "$ref": "#/definitions/persistence" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "supersede_fact" },
+            "category": { "type": "string" },
+            "setTags": { "type": "array", "items": { "type": "string" } },
+            "addTags": { "type": "array", "items": { "type": "string" } },
+            "removeTags": { "type": "array", "items": { "type": "string" } },
+            "data": { "type": "object" },
+            "persistence": { "$ref": "#/definitions/persistence" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "siteType", "name"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "add_site" },
+            "siteType": { "type": "string" },
+            "name": { "type": "string" },
+            "tags": { "type": "array", "items": { "type": "string" } },
+            "asset": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "result": {
+      "type": "object",
+      "required": ["text"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "effects": { "type": "array", "items": { "$ref": "#/definitions/effect" } },
+        "choices": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/choice" } },
+        "table": { "$ref": "#/definitions/tableRef" },
+        "asset": { "type": "string" },
+        "assetLabel": {
+          "description": "Authored display label for `asset`; never derived by parsing the asset reference.",
+          "type": "string"
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "required": ["id", "result"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "weight": { "type": "integer", "minimum": 1 },
+        "range": {
+          "type": "array",
+          "items": [{ "type": "integer" }, { "type": "integer" }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "requireTags": { "type": "array", "items": { "type": "string" } },
+            "forbidTags": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "result": { "$ref": "#/definitions/result" }
+      }
+    }
+  }
+}

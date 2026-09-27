@@ -1,0 +1,163 @@
+{
+  "worldTick": 6,
+  "position": {
+    "q": 1,
+    "r": 0
+  },
+  "regionRadius": 2,
+  "gridType": "hex",
+  "reachable": [
+    {
+      "q": 0,
+      "r": 0
+    },
+    {
+      "q": 0,
+      "r": 1
+    },
+    {
+      "q": 1,
+      "r": -1
+    },
+    {
+      "q": 1,
+      "r": 1
+    },
+    {
+      "q": 2,
+      "r": -1
+    },
+    {
+      "q": 2,
+      "r": 0
+    }
+  ],
+  "hexes": [
+    {
+      "q": 2,
+      "r": -1,
+      "terrain": "water",
+      "terrainLabel": "Water",
+      "tags": [
+        "terrain:water"
+      ],
+      "sites": [],
+      "facts": [],
+      "markers": [],
+      "visitedTick": 4
+    },
+    {
+      "q": 0,
+      "r": 0,
+      "terrain": "plains",
+      "terrainLabel": "Plains",
+      "tags": [
+        "terrain:plains"
+      ],
+      "sites": [],
+      "facts": [],
+      "markers": [],
+      "visitedTick": 0
+    },
+    {
+      "q": 1,
+      "r": 0,
+      "terrain": "hills",
+      "terrainLabel": "Hills",
+      "tags": [
+        "terrain:hills"
+      ],
+      "sites": [],
+      "facts": [
+        {
+          "id": "0041d08f-44eb-5d71-a2f4-d6060ada867b",
+          "category": "scavenged_remains",
+          "tags": [
+            "scavenged",
+            "bones"
+          ],
+          "createdTick": 2
+        },
+        {
+          "id": "9f422843-f6b9-5d06-b1ec-5a46106a26f8",
+          "category": "scavenger_activity",
+          "tags": [
+            "scavengers",
+            "active"
+          ],
+          "createdTick": 6
+        }
+      ],
+      "markers": [
+        {
+          "key": "fact:0041d08f-44eb-5d71-a2f4-d6060ada867b",
+          "label": "Scavenged remains",
+          "icon": "icon:bones"
+        },
+        {
+          "key": "fact:9f422843-f6b9-5d06-b1ec-5a46106a26f8",
+          "label": "Scavenger activity",
+          "icon": "icon:scavenger"
+        }
+      ],
+      "visitedTick": 2
+    },
+    {
+      "q": 2,
+      "r": 0,
+      "terrain": "forest",
+      "terrainLabel": "Forest",
+      "tags": [
+        "terrain:forest"
+      ],
+      "sites": [],
+      "facts": [],
+      "markers": [],
+      "visitedTick": 4
+    }
+  ],
+  "legend": {
+    "plains": {
+      "label": "Plains",
+      "moveCost": 1,
+      "passable": true,
+      "glyph": "P",
+      "color": "#9ab86a"
+    },
+    "forest": {
+      "label": "Forest",
+      "moveCost": 2,
+      "passable": true,
+      "glyph": "F",
+      "color": "#4a7c59"
+    },
+    "hills": {
+      "label": "Hills",
+      "moveCost": 2,
+      "passable": true,
+      "glyph": "H",
+      "color": "#b09a6a"
+    },
+    "swamp": {
+      "label": "Swamp",
+      "moveCost": 3,
+      "passable": true,
+      "glyph": "S",
+      "color": "#5d6b8a"
+    },
+    "mountains": {
+      "label": "Mountains",
+      "moveCost": 1,
+      "passable": false,
+      "glyph": "M",
+      "color": "#8a8a8a"
+    },
+    "water": {
+      "label": "Water",
+      "moveCost": 1,
+      "passable": false,
+      "glyph": "W",
+      "color": "#3d6b9a"
+    }
+  }
+}

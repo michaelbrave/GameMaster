@@ -1,0 +1,12 @@
+{
+  "id": "core/omens",
+  "version": 1,
+  "purpose": "travel.omen",
+  "label": "Omens",
+  "selection": { "mode": "dice", "dice": "2d6" },
+  "entries": [
+    { "id": "lone-crow", "range": [2, 4], "result": { "text": "A single crow watches you in silence." } },
+    { "id": "far-thunder", "range": [5, 9], "result": { "text": "Distant thunder rolls across the hills." } },
+    { "id": "cold-wind", "range": [10, 12], "result": { "text": "A cold wind carries the smell of old ashes." } }
+  ]
+}

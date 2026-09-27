@@ -1,0 +1,74 @@
+{
+  "$id": "worldforge/session.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Session state response",
+  "type": "object",
+  "required": ["session", "worldTick", "worldName", "regionRadius", "reachable", "discoveredCount"],
+  "additionalProperties": false,
+  "properties": {
+    "gridType": { "enum": ["hex", "square-diamond"] },
+    "session": {
+      "type": "object",
+      "required": [
+        "id", "worldId", "characterName", "position", "status", "version",
+        "creatorPolicy", "pendingEncounter", "createdAt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.json#/definitions/uuid" },
+        "worldId": { "$ref": "common.json#/definitions/uuid" },
+        "characterName": { "type": "string" },
+        "position": { "$ref": "common.json#/definitions/axial" },
+        "status": { "enum": ["active", "ended"] },
+        "version": { "type": "integer", "minimum": 0 },
+        "creatorPolicy": {
+          "type": "object",
+          "required": ["tablePreview", "completeHistory"],
+          "additionalProperties": false,
+          "properties": {
+            "tablePreview": { "type": "boolean" },
+            "completeHistory": { "type": "boolean" }
+          }
+        },
+        "pendingEncounter": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["encounterId", "tableId", "tableVersion", "text", "choices", "startedTick", "hex"],
+              "properties": {
+                "encounterId": { "type": "string" },
+                "tableId": { "type": "string" },
+                "tableVersion": { "type": "integer" },
+                "text": { "type": "string" },
+                "choices": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "label", "table"],
+                    "properties": {
+                      "id": { "type": "string" },
+                      "label": { "type": "string" },
+                      "table": { "$ref": "common.json#/definitions/tableRef" },
+                      "presentation": { "enum": ["battlefield"] }
+                    }
+                  }
+                },
+                "startedTick": { "type": "integer" },
+                "hex": { "$ref": "common.json#/definitions/axial" },
+                "asset": { "type": "string" },
+                "assetLabel": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "createdAt": { "$ref": "common.json#/definitions/isoDateTime" }
+      }
+    },
+    "worldTick": { "type": "integer", "minimum": 0 },
+    "worldName": { "type": "string" },
+    "regionRadius": { "type": "integer", "minimum": 0 },
+    "reachable": { "type": "array", "items": { "$ref": "common.json#/definitions/axial" } },
+    "discoveredCount": { "type": "integer", "minimum": 0 }
+  }
+}

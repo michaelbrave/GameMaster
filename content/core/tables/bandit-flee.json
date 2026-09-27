@@ -1,0 +1,18 @@
+{
+  "id": "core/bandit-flee",
+  "version": 1,
+  "purpose": "encounter.bandit.flee",
+  "label": "Fleeing the bandits",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    { "id": "clean-escape", "weight": 7, "result": { "text": "You slip away before they can react." } },
+    {
+      "id": "chased",
+      "weight": 3,
+      "result": {
+        "text": "They run you ragged through the wilds before you lose them.",
+        "effects": [{ "type": "log", "text": "You are scratched, winded, and alive." }]
+      }
+    }
+  ]
+}

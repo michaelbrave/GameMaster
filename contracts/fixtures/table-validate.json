@@ -1,0 +1,9 @@
+{
+  "valid": false,
+  "errors": [
+    {
+      "path": "entries[0].weight",
+      "message": "weighted-mode entries require an integer weight >= 1"
+    }
+  ]
+}

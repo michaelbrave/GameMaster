@@ -1,0 +1,10 @@
+{
+  "id": "core/remains-evolution",
+  "version": 1,
+  "factCategory": "remains",
+  "bands": [
+    { "minElapsed": 0, "maxElapsed": 3, "table": { "id": "core/remains-fresh", "version": 1 } },
+    { "minElapsed": 3, "maxElapsed": 8, "table": { "id": "core/remains-ripe", "version": 1 } },
+    { "minElapsed": 8, "maxElapsed": null, "table": { "id": "core/remains-old", "version": 1 } }
+  ]
+}

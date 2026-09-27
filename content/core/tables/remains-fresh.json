@@ -1,0 +1,21 @@
+{
+  "id": "core/remains-fresh",
+  "version": 1,
+  "purpose": "evolution.remains.fresh",
+  "label": "Fresh remains (elapsed 0-2 ticks)",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    { "id": "undisturbed", "weight": 8, "result": { "text": "The remains lie undisturbed." } },
+    {
+      "id": "early-scavengers",
+      "weight": 2,
+      "result": {
+        "text": "Crows have already found the remains.",
+        "effects": [
+          { "type": "supersede_fact", "addTags": ["picked-at"] },
+          { "type": "log", "text": "Dark wings scatter as you approach." }
+        ]
+      }
+    }
+  ]
+}

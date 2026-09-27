@@ -1,6 +1,9 @@
 elm-stuff/
+client/public/main.js
 public/main.js
 node_modules/
+dist/
 *.swp
 *.swo
 .DS_Store
+.env

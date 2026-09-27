@@ -1,0 +1,142 @@
+{
+  "$id": "worldforge/battlefield.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Battlefield sandbox response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "location",
+    "gridType",
+    "radius",
+    "feetPerStep",
+    "terrain",
+    "color",
+    "tokens",
+    "obstacles",
+    "routes"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "location": {
+      "$ref": "common.json#/definitions/axial"
+    },
+    "gridType": {
+      "enum": [
+        "hex",
+        "square-diamond"
+      ]
+    },
+    "radius": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 8
+    },
+    "feetPerStep": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "terrain": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "tokens": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "kind",
+          "position",
+          "allowance",
+          "spent"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "kind": {
+            "enum": [
+              "character",
+              "enemy",
+              "object"
+            ]
+          },
+          "position": {
+            "$ref": "common.json#/definitions/axial"
+          },
+          "allowance": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 30
+          },
+          "spent": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "obstacles": {
+      "type": "array",
+      "items": {
+        "$ref": "common.json#/definitions/axial"
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tokenId",
+          "destinations"
+        ],
+        "properties": {
+          "tokenId": {
+            "type": "string"
+          },
+          "destinations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "to",
+                "cost",
+                "path"
+              ],
+              "properties": {
+                "to": {
+                  "$ref": "common.json#/definitions/axial"
+                },
+                "cost": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "path": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "common.json#/definitions/axial"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

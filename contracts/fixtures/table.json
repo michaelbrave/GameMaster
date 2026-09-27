@@ -1,0 +1,122 @@
+{
+  "id": "core/travel-encounter",
+  "versions": [
+    {
+      "id": "core/travel-encounter",
+      "version": 1,
+      "purpose": "travel.encounter",
+      "label": "Travel encounter",
+      "selection": {
+        "mode": "weighted"
+      },
+      "entries": [
+        {
+          "id": "quiet-road",
+          "weight": 50,
+          "result": {
+            "text": "The way is quiet. Nothing troubles the journey."
+          }
+        },
+        {
+          "id": "bandit-ambush",
+          "weight": 18,
+          "conditions": {
+            "forbidTags": [
+              "terrain:water"
+            ]
+          },
+          "result": {
+            "text": "Bandits burst from cover, weapons drawn, demanding your coin!",
+            "asset": "icon:bandits",
+            "assetLabel": "Bandits",
+            "choices": [
+              {
+                "id": "fight",
+                "label": "Fight them off",
+                "table": {
+                  "id": "core/bandit-fight",
+                  "version": 1
+                },
+                "presentation": "battlefield"
+              },
+              {
+                "id": "flee",
+                "label": "Flee into the wilds",
+                "table": {
+                  "id": "core/bandit-flee",
+                  "version": 1
+                }
+              },
+              {
+                "id": "bargain",
+                "label": "Try to bargain",
+                "table": {
+                  "id": "core/bandit-bargain",
+                  "version": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "wild-beasts",
+          "weight": 14,
+          "conditions": {
+            "forbidTags": [
+              "terrain:water"
+            ]
+          },
+          "result": {
+            "text": "A pack of snarling beasts circles you, eyes hungry!",
+            "asset": "icon:beast",
+            "assetLabel": "Snarling Beasts",
+            "choices": [
+              {
+                "id": "fight",
+                "label": "Stand and fight",
+                "table": {
+                  "id": "core/beast-fight",
+                  "version": 1
+                },
+                "presentation": "battlefield"
+              },
+              {
+                "id": "flee",
+                "label": "Run for it",
+                "table": {
+                  "id": "core/beast-flee",
+                  "version": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "wandering-trader",
+          "weight": 8,
+          "result": {
+            "text": "A wandering trader shares the road for a while.",
+            "effects": [
+              {
+                "type": "log",
+                "text": "The trader warns that the dead do not always rest quietly here."
+              }
+            ]
+          }
+        },
+        {
+          "id": "strange-omens",
+          "weight": 10,
+          "result": {
+            "text": "Strange signs cross your path.",
+            "table": {
+              "id": "core/omens",
+              "version": 1
+            }
+          }
+        }
+      ],
+      "lifecycle": "published"
+    }
+  ]
+}

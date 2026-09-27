@@ -1,0 +1,84 @@
+{
+  "$id": "worldforge/map.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Play-view map response",
+  "type": "object",
+  "required": ["worldTick", "position", "regionRadius", "reachable", "hexes", "legend"],
+  "additionalProperties": false,
+  "properties": {
+    "gridType": { "enum": ["hex", "square-diamond"] },
+    "worldTick": { "type": "integer", "minimum": 0 },
+    "position": { "$ref": "common.json#/definitions/axial" },
+    "regionRadius": { "type": "integer", "minimum": 0 },
+    "reachable": { "type": "array", "items": { "$ref": "common.json#/definitions/axial" } },
+    "hexes": { "type": "array", "items": { "$ref": "#/definitions/hexSummary" } },
+    "legend": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["label", "moveCost", "passable", "glyph", "color"],
+        "properties": {
+          "label": { "type": "string" },
+          "moveCost": { "type": "integer", "minimum": 0 },
+          "passable": { "type": "boolean" },
+          "glyph": { "type": "string", "minLength": 1, "maxLength": 2 },
+          "color": { "type": "string" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "hexSummary": {
+      "type": "object",
+      "required": ["q", "r", "terrain", "terrainLabel", "tags", "sites", "facts", "markers", "visitedTick"],
+      "additionalProperties": false,
+      "properties": {
+        "q": { "type": "integer" },
+        "r": { "type": "integer" },
+        "terrain": { "type": "string" },
+        "terrainLabel": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "sites": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "siteType", "name", "tags"],
+            "properties": {
+              "id": { "type": "string" },
+              "siteType": { "type": "string" },
+              "name": { "type": "string" },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "asset": { "type": "string" }
+            }
+          }
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "category", "tags", "createdTick"],
+            "properties": {
+              "id": { "type": "string" },
+              "category": { "type": "string" },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "createdTick": { "type": "integer" }
+            }
+          }
+        },
+        "markers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["key", "label", "icon"],
+            "properties": {
+              "key": { "type": "string" },
+              "label": { "type": "string" },
+              "icon": { "type": "string" }
+            }
+          }
+        },
+        "visitedTick": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

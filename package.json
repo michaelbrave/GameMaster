@@ -1,0 +1,27 @@
+{
+  "name": "worldforge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Worldforge — solo procedural hex-crawl vertical slice (Elm client, TypeScript server, PostgreSQL).",
+  "scripts": {
+    "setup": "cd server && npm install && cd ../client && npm install",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npx elm make src/Main.elm --output=public/main.js",
+    "dev": "npm run db:up && npm run build && cd server && npm run start",
+    "dev:memory": "npm run build && cd server && WORLDFORGE_STORE=memory npm run start",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:migrate": "cd server && npm run migrate",
+    "test": "npm run test:server && npm run test:contracts && npm run test:client && npm run test:e2e",
+    "test:server": "cd server && npm test",
+    "test:contracts": "cd server && npm run build && node --test \"dist/test/contracts/*.test.js\"",
+    "test:client": "cd client && npx elm make src/Main.elm --output=/tmp/worldforge-client-check.js && npx elm-test",
+    "test:e2e": "npm run build:server && node --test --test-timeout=120000 \"e2e/*.test.mjs\"",
+    "fixtures": "cd server && npm run fixtures",
+    "demo": "npm run build:server && node e2e/demo.mjs",
+    "format:check": "cd server && npm run format:check && cd ../client && npm run format:check",
+    "format:write": "cd server && npm run format:write && cd ../client && npm run format:write",
+    "lint": "cd server && npm run lint && cd ../client && npx elm make src/Main.elm --output=/dev/null"
+  }
+}

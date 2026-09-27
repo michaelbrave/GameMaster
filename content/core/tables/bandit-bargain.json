@@ -1,0 +1,25 @@
+{
+  "id": "core/bandit-bargain",
+  "version": 1,
+  "purpose": "encounter.bandit.bargain",
+  "label": "Bargaining with the bandits",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    {
+      "id": "toll-paid",
+      "weight": 5,
+      "result": {
+        "text": "You pay a toll of supplies and pass unharmed.",
+        "effects": [{ "type": "log", "text": "Your pack feels lighter, but the road is yours." }]
+      }
+    },
+    {
+      "id": "betrayal",
+      "weight": 5,
+      "result": {
+        "text": "They take your offer as weakness and attack!",
+        "table": { "id": "core/bandit-fight", "version": 1 }
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "$id": "worldforge/creator.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Creator endpoint payloads",
+  "definitions": {
+    "tableList": {
+      "type": "object",
+      "required": ["tables"],
+      "additionalProperties": false,
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "purpose", "label", "versions", "latestVersion"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "purpose": { "type": "string" },
+              "label": { "type": "string" },
+              "versions": { "type": "array", "items": { "type": "integer", "minimum": 1 } },
+              "latestVersion": { "type": "integer", "minimum": 1 }
+            }
+          }
+        }
+      }
+    },
+    "validateResult": {
+      "type": "object",
+      "required": ["valid", "errors"],
+      "additionalProperties": false,
+      "properties": {
+        "valid": { "type": "boolean" },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "message"],
+            "additionalProperties": false,
+            "properties": {
+              "path": { "type": "string" },
+              "message": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "previewResult": {
+      "type": "object",
+      "required": ["previews"],
+      "additionalProperties": false,
+      "properties": {
+        "previews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["index", "seed", "rolls", "text"],
+            "additionalProperties": false,
+            "properties": {
+              "index": { "type": "integer", "minimum": 0 },
+              "seed": { "type": "string" },
+              "rolls": { "type": "array", "items": { "type": "object" } },
+              "text": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "creatorHistory": {
+      "type": "object",
+      "required": ["events", "resolutions"],
+      "additionalProperties": false,
+      "properties": {
+        "events": { "type": "array", "items": { "type": "object" } },
+        "resolutions": { "type": "array", "items": { "type": "object" } }
+      }
+    }
+  }
+}

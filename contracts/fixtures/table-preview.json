@@ -1,0 +1,73 @@
+{
+  "previews": [
+    {
+      "index": 0,
+      "seed": "fixture-preview#0",
+      "rolls": [
+        {
+          "tableId": "core/travel-encounter",
+          "tableVersion": 1,
+          "label": "Travel encounter",
+          "purpose": "travel.encounter",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 66,
+            "totalWeight": 100
+          },
+          "selectedEntryId": "bandit-ambush",
+          "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+        }
+      ],
+      "text": [
+        "Bandits burst from cover, weapons drawn, demanding your coin!"
+      ]
+    },
+    {
+      "index": 1,
+      "seed": "fixture-preview#1",
+      "rolls": [
+        {
+          "tableId": "core/travel-encounter",
+          "tableVersion": 1,
+          "label": "Travel encounter",
+          "purpose": "travel.encounter",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 62,
+            "totalWeight": 100
+          },
+          "selectedEntryId": "bandit-ambush",
+          "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+        }
+      ],
+      "text": [
+        "Bandits burst from cover, weapons drawn, demanding your coin!"
+      ]
+    },
+    {
+      "index": 2,
+      "seed": "fixture-preview#2",
+      "rolls": [
+        {
+          "tableId": "core/travel-encounter",
+          "tableVersion": 1,
+          "label": "Travel encounter",
+          "purpose": "travel.encounter",
+          "depth": 0,
+          "selection": {
+            "mode": "weighted",
+            "roll": 23,
+            "totalWeight": 100
+          },
+          "selectedEntryId": "quiet-road",
+          "text": "The way is quiet. Nothing troubles the journey."
+        }
+      ],
+      "text": [
+        "The way is quiet. Nothing troubles the journey."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,476 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Worldforge API",
+    "version": "0.1.0",
+    "description": "Local solo procedural hex-crawl engine. Commands use idempotency keys and optimistic expected-version checks; resolutions are replayable traces over versioned content."
+  },
+  "servers": [{ "url": "http://localhost:4020" }],
+  "paths": {
+  "/api/v1/sessions/{sessionId}/battlefields/{q}/{r}": {
+    "parameters": [
+      {
+        "name": "sessionId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "q",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "r",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    ],
+    "get": {
+      "summary": "Read the battlefield at the session's current world location",
+      "responses": {
+        "200": {
+          "description": "Saved board, or default sandbox before its first edit",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "json-schema/battlefield.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Apply a validated sandbox edit or movement command",
+      "description": "Does not advance world time or resolve exploration encounters. Requires a unique commandId and current battlefield expectedVersion. Exact retries return the original response.",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "expectedVersion",
+                "commandId",
+                "action"
+              ],
+              "properties": {
+                "expectedVersion": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "commandId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "action": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "label",
+                        "kind",
+                        "at",
+                        "allowance"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "add"
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "kind": {
+                          "enum": [
+                            "character",
+                            "enemy",
+                            "object"
+                          ]
+                        },
+                        "at": {
+                          "$ref": "json-schema/common.json#/definitions/axial"
+                        },
+                        "allowance": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 30
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "tokenId",
+                        "to"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "move"
+                        },
+                        "tokenId": {
+                          "type": "string"
+                        },
+                        "to": {
+                          "$ref": "json-schema/common.json#/definitions/axial"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "tokenId"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "remove"
+                        },
+                        "tokenId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "at"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "obstacle"
+                        },
+                        "at": {
+                          "$ref": "json-schema/common.json#/definitions/axial"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "type"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "reset"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "radius",
+                        "feetPerStep"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "settings"
+                        },
+                        "radius": {
+                          "type": "integer",
+                          "minimum": 2,
+                          "maximum": 8
+                        },
+                        "feetPerStep": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 100
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Updated board and authoritative routes",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "json-schema/battlefield.json"
+              }
+            }
+          }
+        },
+        "409": {
+          "description": "Stale battlefield version"
+        },
+        "422": {
+          "description": "Invalid or impossible action"
+        }
+      }
+    }
+  },
+    "/health": {
+      "get": { "summary": "Liveness probe", "responses": { "200": { "description": "Service health" } } }
+    },
+    "/api/v1/worlds": {
+      "post": {
+        "summary": "Create a seeded finite world from the loaded content release",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "gridType": { "enum": ["hex", "square-diamond"], "default": "hex" },
+                  "name": { "type": "string" },
+                  "seed": { "type": "string", "description": "Omit to generate a random seed" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Created world", "content": { "application/json": { "schema": { "$ref": "json-schema/world.json" } } } },
+          "422": { "description": "Validation failed", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    },
+    "/api/v1/worlds/{worldId}": {
+      "get": {
+        "summary": "World metadata and current tick",
+        "parameters": [{ "name": "worldId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": {
+          "200": { "description": "World", "content": { "application/json": { "schema": { "$ref": "json-schema/world.json" } } } },
+          "404": { "description": "Not found", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    },
+    "/api/v1/sessions": {
+      "post": {
+        "summary": "Start a play session (optionally with creator visibility policy categories)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["worldId", "characterName"],
+                "properties": {
+                  "worldId": { "type": "string", "format": "uuid" },
+                  "characterName": { "type": "string" },
+                  "creatorPolicy": {
+                    "type": "object",
+                    "properties": {
+                      "tablePreview": { "type": "boolean", "default": false },
+                      "completeHistory": { "type": "boolean", "default": false }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Session state", "content": { "application/json": { "schema": { "$ref": "json-schema/session.json" } } } }
+        }
+      }
+    },
+    "/api/v1/sessions/{sessionId}": {
+      "get": {
+        "summary": "Current session state",
+        "parameters": [{ "name": "sessionId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": { "200": { "description": "Session state", "content": { "application/json": { "schema": { "$ref": "json-schema/session.json" } } } } }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/map": {
+      "get": {
+        "summary": "Play-view map: discovered hexes only, with state-derived markers",
+        "parameters": [{ "name": "sessionId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": { "200": { "description": "Map", "content": { "application/json": { "schema": { "$ref": "json-schema/map.json" } } } } }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/hexes/{q}/{r}": {
+      "get": {
+        "summary": "Player-visible hex detail; undiscovered hexes return 404",
+        "parameters": [
+          { "name": "sessionId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } },
+          { "name": "q", "in": "path", "required": true, "schema": { "type": "integer" } },
+          { "name": "r", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Hex detail with player-visible history" },
+          "404": { "description": "Undiscovered or nonexistent", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/history": {
+      "get": {
+        "summary": "Paginated player-visible text log",
+        "parameters": [
+          { "name": "sessionId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } },
+          { "name": "offset", "in": "query", "schema": { "type": "integer", "default": 0 } },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 100, "maximum": 500 } }
+        ],
+        "responses": { "200": { "description": "History", "content": { "application/json": { "schema": { "$ref": "json-schema/history.json" } } } } }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/creator/history": {
+      "get": {
+        "summary": "Complete unredacted history (requires the completeHistory policy category)",
+        "parameters": [{ "name": "sessionId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "responses": {
+          "200": { "description": "Complete history", "content": { "application/json": { "schema": { "$ref": "json-schema/creator.json#/definitions/creatorHistory" } } } },
+          "403": { "description": "Policy disabled", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/commands/travel": {
+      "post": {
+        "summary": "Resolve travel: materialization, time, discovery, oracle roll, evolution",
+        "parameters": [{ "name": "sessionId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["idempotencyKey", "expectedVersion", "to"],
+                "properties": {
+                  "idempotencyKey": { "type": "string", "minLength": 1 },
+                  "expectedVersion": { "type": "integer", "minimum": 0 },
+                  "to": { "$ref": "json-schema/common.json#/definitions/axial" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Resolution", "content": { "application/json": { "schema": { "$ref": "json-schema/command-response.json" } } } },
+          "409": { "description": "Version conflict", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } },
+          "422": { "description": "Command rejected", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/commands/encounter-action": {
+      "post": {
+        "summary": "Apply one explicit oracle choice",
+        "parameters": [{ "name": "sessionId", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["idempotencyKey", "expectedVersion", "choiceId"],
+                "properties": {
+                  "idempotencyKey": { "type": "string", "minLength": 1 },
+                  "expectedVersion": { "type": "integer", "minimum": 0 },
+                  "choiceId": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Resolution", "content": { "application/json": { "schema": { "$ref": "json-schema/command-response.json" } } } },
+          "409": { "description": "Version conflict", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    },
+
+    "/api/v1/tables": {
+      "get": {
+        "summary": "List table definitions and versions",
+        "responses": { "200": { "description": "Tables", "content": { "application/json": { "schema": { "$ref": "json-schema/creator.json#/definitions/tableList" } } } } }
+      },
+      "post": {
+        "summary": "Publish a new immutable table version (creator capability)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["sessionId", "definition"],
+                "properties": {
+                  "sessionId": { "type": "string", "format": "uuid" },
+                  "definition": { "$ref": "json-schema/table-definition.json" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Published" },
+          "409": { "description": "Version sequence conflict", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    },
+    "/api/v1/tables/{id}": {
+      "get": {
+        "summary": "All versions of one table",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Table versions" } }
+      }
+    },
+    "/api/v1/tables/validate": {
+      "post": {
+        "summary": "Validate an uncommitted table draft",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["draft"],
+                "properties": { "draft": { "$ref": "json-schema/table-definition.json" } }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Validation result", "content": { "application/json": { "schema": { "$ref": "json-schema/creator.json#/definitions/validateResult" } } } } }
+      }
+    },
+    "/api/v1/tables/preview": {
+      "post": {
+        "summary": "Seeded preview rolls without world mutation (requires the tablePreview policy category)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["sessionId", "seed"],
+                "properties": {
+                  "sessionId": { "type": "string", "format": "uuid" },
+                  "tableId": { "type": "string" },
+                  "draft": { "$ref": "json-schema/table-definition.json" },
+                  "seed": { "type": "string" },
+                  "count": { "type": "integer", "minimum": 1, "maximum": 50 }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Previews", "content": { "application/json": { "schema": { "$ref": "json-schema/creator.json#/definitions/previewResult" } } } },
+          "403": { "description": "Policy disabled", "content": { "application/json": { "schema": { "$ref": "json-schema/common.json#/definitions/error" } } } }
+        }
+      }
+    }
+  }
+}
+

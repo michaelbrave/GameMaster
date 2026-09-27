@@ -1,0 +1,64 @@
+{
+  "id": "core/remains-ripe",
+  "version": 1,
+  "purpose": "evolution.remains.ripe",
+  "label": "Ripening remains (elapsed 3-7 ticks)",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    {
+      "id": "scavengers",
+      "weight": 5,
+      "result": {
+        "text": "Scavengers have been at the remains; little of value is left.",
+        "effects": [
+          {
+            "type": "supersede_fact",
+            "category": "scavenged_remains",
+            "setTags": ["scavenged", "bones"],
+            "persistence": { "mode": "permanent" }
+          },
+          {
+            "type": "add_fact",
+            "category": "scavenger_activity",
+            "tags": ["scavengers", "active"],
+            "data": { "drawn": "remains" }
+          },
+          { "type": "log", "text": "Tracks and feathers mark a busy feast." }
+        ]
+      }
+    },
+    {
+      "id": "picked-clean",
+      "weight": 3,
+      "result": {
+        "text": "The remains have been picked clean; anything portable is gone.",
+        "effects": [
+          {
+            "type": "supersede_fact",
+            "category": "stripped_remains",
+            "setTags": ["bones", "stripped"],
+            "persistence": { "mode": "permanent" }
+          },
+          { "type": "log", "text": "Whatever was worth taking has been taken." }
+        ]
+      }
+    },
+    {
+      "id": "reanimated",
+      "weight": 2,
+      "result": {
+        "text": "The dead have risen! Something unnatural stirs here.",
+        "asset": "icon:undead",
+        "effects": [
+          {
+            "type": "supersede_fact",
+            "category": "undead",
+            "setTags": ["undead", "hostile"],
+            "persistence": { "mode": "permanent" }
+          },
+          { "type": "log", "text": "An unnatural dread hangs over this place." }
+        ]
+      }
+    }
+  ]
+}

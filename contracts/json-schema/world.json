@@ -1,0 +1,18 @@
+{
+  "$id": "worldforge/world.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "World metadata",
+  "type": "object",
+  "required": ["id", "name", "seed", "contentRelease", "currentTick", "version", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "gridType": { "enum": ["hex", "square-diamond"] },
+    "id": { "$ref": "common.json#/definitions/uuid" },
+    "name": { "type": "string" },
+    "seed": { "type": "string" },
+    "contentRelease": { "type": "string" },
+    "currentTick": { "type": "integer", "minimum": 0 },
+    "version": { "type": "integer", "minimum": 0 },
+    "createdAt": { "$ref": "common.json#/definitions/isoDateTime" }
+  }
+}

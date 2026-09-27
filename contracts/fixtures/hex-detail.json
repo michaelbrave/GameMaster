@@ -1,0 +1,217 @@
+{
+  "hex": {
+    "q": 1,
+    "r": 0,
+    "terrain": "hills",
+    "terrainLabel": "Hills",
+    "tags": [
+      "terrain:hills"
+    ],
+    "sites": [],
+    "facts": [
+      {
+        "id": "0041d08f-44eb-5d71-a2f4-d6060ada867b",
+        "category": "scavenged_remains",
+        "tags": [
+          "scavenged",
+          "bones"
+        ],
+        "createdTick": 2
+      },
+      {
+        "id": "9f422843-f6b9-5d06-b1ec-5a46106a26f8",
+        "category": "scavenger_activity",
+        "tags": [
+          "scavengers",
+          "active"
+        ],
+        "createdTick": 6
+      }
+    ],
+    "markers": [
+      {
+        "key": "fact:0041d08f-44eb-5d71-a2f4-d6060ada867b",
+        "label": "Scavenged remains",
+        "icon": "icon:bones"
+      },
+      {
+        "key": "fact:9f422843-f6b9-5d06-b1ec-5a46106a26f8",
+        "label": "Scavenger activity",
+        "icon": "icon:scavenger"
+      }
+    ],
+    "visitedTick": 2
+  },
+  "history": [
+    {
+      "seq": 63,
+      "tick": 0,
+      "type": "time_advanced",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Time passes: tick 0 → 2."
+    },
+    {
+      "seq": 64,
+      "tick": 2,
+      "type": "character_moved",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Traveled to 1,0 (hills, cost 2)."
+    },
+    {
+      "seq": 65,
+      "tick": 2,
+      "type": "hex_discovered",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Discovered hills at 1,0."
+    },
+    {
+      "seq": 66,
+      "tick": 2,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+    },
+    {
+      "seq": 67,
+      "tick": 2,
+      "type": "encounter_started",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+    },
+    {
+      "seq": 68,
+      "tick": 2,
+      "type": "encounter_resolved",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Choice: Fight them off. You drive off the bandits; their dead lie among the stones."
+    },
+    {
+      "seq": 69,
+      "tick": 2,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "You drive off the bandits; their dead lie among the stones."
+    },
+    {
+      "seq": 70,
+      "tick": 2,
+      "type": "fact_created",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "A new fact takes hold: remains."
+    },
+    {
+      "seq": 71,
+      "tick": 2,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Left to rot, the fallen may attract worse things."
+    },
+    {
+      "seq": 81,
+      "tick": 4,
+      "type": "time_advanced",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Time passes: tick 4 → 6."
+    },
+    {
+      "seq": 82,
+      "tick": 6,
+      "type": "character_moved",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Traveled to 1,0 (hills, cost 2)."
+    },
+    {
+      "seq": 83,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "The way is quiet. Nothing troubles the journey."
+    },
+    {
+      "seq": 85,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "The remains lie undisturbed."
+    },
+    {
+      "seq": 87,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Scavengers have been at the remains; little of value is left."
+    },
+    {
+      "seq": 88,
+      "tick": 6,
+      "type": "fact_superseded",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "The remains has become scavenged remains."
+    },
+    {
+      "seq": 89,
+      "tick": 6,
+      "type": "fact_created",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "A new fact takes hold: scavenger activity."
+    },
+    {
+      "seq": 90,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Tracks and feathers mark a busy feast."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "regionRadius": 2,
+  "homeTerrain": "plains",
+  "terrainTable": { "id": "core/terrain-generation", "version": 1 },
+  "siteTable": { "id": "core/site-generation", "version": 1 },
+  "encounterTable": { "id": "core/travel-encounter", "version": 1 },
+  "evolutionRules": ["core/remains-evolution@1"],
+  "terrainClustering": {
+    "strength": 9,
+    "cellSize": 2,
+    "cellBlend": 0.8,
+    "perTerrain": {
+      "water": { "cellSize": 4, "strength": 10 },
+      "mountains": { "cellSize": 3, "strength": 10 },
+      "forest": { "cellSize": 3 }
+    }
+  }
+}

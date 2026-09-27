@@ -1,0 +1,75 @@
+{
+  "id": "core/site-generation",
+  "version": 1,
+  "purpose": "worldgen.site",
+  "label": "Hex site generation",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    {
+      "id": "quiet",
+      "weight": 55,
+      "result": { "text": "Nothing of note." }
+    },
+    {
+      "id": "ruined-tower",
+      "weight": 10,
+      "conditions": { "forbidTags": ["terrain:water"] },
+      "result": {
+        "text": "A ruined watchtower.",
+        "effects": [
+          { "type": "add_site", "siteType": "ruined_tower", "name": "Ruined watchtower", "tags": ["ruin"], "asset": "icon:ruin" }
+        ]
+      }
+    },
+    {
+      "id": "standing-stones",
+      "weight": 7,
+      "conditions": { "forbidTags": ["terrain:water", "terrain:swamp"] },
+      "result": {
+        "text": "A circle of standing stones.",
+        "effects": [
+          { "type": "add_site", "siteType": "standing_stones", "name": "Standing stones", "tags": ["mystic"], "asset": "icon:stones" }
+        ]
+      }
+    },
+    {
+      "id": "bandit-camp",
+      "weight": 6,
+      "conditions": { "forbidTags": ["terrain:water"] },
+      "result": {
+        "text": "Signs of a bandit camp.",
+        "effects": [
+          { "type": "add_fact", "category": "bandit_camp", "tags": ["bandits", "active"], "data": { "strength": "small" } }
+        ]
+      }
+    },
+    {
+      "id": "old-battlefield",
+      "weight": 6,
+      "conditions": { "forbidTags": ["terrain:water"] },
+      "result": {
+        "text": "An old battlefield, long forgotten.",
+        "effects": [
+          {
+            "type": "add_fact",
+            "category": "remains",
+            "tags": ["ancient", "bones"],
+            "data": { "count": 12, "origin": "battlefield" },
+            "persistence": { "mode": "evolves", "procedure": "core/remains-evolution@1" }
+          }
+        ]
+      }
+    },
+    {
+      "id": "weathered-shrine",
+      "weight": 6,
+      "conditions": { "forbidTags": ["terrain:water"] },
+      "result": {
+        "text": "A weathered roadside shrine.",
+        "effects": [
+          { "type": "add_site", "siteType": "shrine", "name": "Weathered shrine", "tags": ["holy"], "asset": "icon:shrine" }
+        ]
+      }
+    }
+  ]
+}

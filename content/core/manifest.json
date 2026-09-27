@@ -1,0 +1,24 @@
+{
+  "id": "core",
+  "version": "1.0.0",
+  "description": "Worldforge core content pack: terrain, seeded hex generation, travel encounters, bandit/beast oracle choices, and time-banded remains evolution.",
+  "terrain": "terrain.json",
+  "worldgen": "worldgen.json",
+  "tables": [
+    "tables/terrain-generation.json",
+    "tables/site-generation.json",
+    "tables/travel-encounter.json",
+    "tables/omens.json",
+    "tables/bandit-fight.json",
+    "tables/bandit-flee.json",
+    "tables/bandit-bargain.json",
+    "tables/beast-fight.json",
+    "tables/beast-flee.json",
+    "tables/remains-fresh.json",
+    "tables/remains-ripe.json",
+    "tables/remains-old.json"
+  ],
+  "evolutions": [
+    "evolutions/remains-evolution.json"
+  ]
+}

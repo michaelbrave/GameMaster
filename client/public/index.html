@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Worldforge - a persistent solo procedural hex-crawl">
+    <title>Worldforge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script src="main.js"></script>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var app = Elm.Main.init({
+            node: document.getElementById('app'),
+            flags: {
+                apiBase: window.location.origin,
+                fixtureMode: params.has('fixtures'),
+                savedSessionId: localStorage.getItem('worldforge.session')
+            }
+        });
+        if (app.ports.saveSession) {
+            app.ports.saveSession.subscribe(function (sessionId) {
+                localStorage.setItem('worldforge.session', sessionId);
+            });
+        }
+        if (app.ports.forgetSession) {
+            app.ports.forgetSession.subscribe(function () {
+                localStorage.removeItem('worldforge.session');
+            });
+        }
+    </script>
+</body>
+</html>

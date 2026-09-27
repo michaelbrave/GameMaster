@@ -1,0 +1,56 @@
+{
+  "id": "core/remains-old",
+  "version": 1,
+  "purpose": "evolution.remains.old",
+  "label": "Old remains (elapsed 8+ ticks)",
+  "selection": { "mode": "weighted" },
+  "entries": [
+    {
+      "id": "scattered-bones",
+      "weight": 6,
+      "result": {
+        "text": "Only scattered bones remain.",
+        "effects": [
+          {
+            "type": "supersede_fact",
+            "category": "scattered_bones",
+            "setTags": ["bones", "scattered"],
+            "persistence": { "mode": "permanent" }
+          }
+        ]
+      }
+    },
+    {
+      "id": "haunted",
+      "weight": 2,
+      "result": {
+        "text": "A chill lingers where the dead were left.",
+        "effects": [
+          {
+            "type": "supersede_fact",
+            "category": "scattered_bones",
+            "setTags": ["bones", "scattered"],
+            "persistence": { "mode": "permanent" }
+          },
+          { "type": "add_fact", "category": "haunting", "tags": ["haunting", "uneasy"], "data": {} },
+          { "type": "log", "text": "Travelers will hurry through here at dusk." }
+        ]
+      }
+    },
+    {
+      "id": "dust",
+      "weight": 2,
+      "result": {
+        "text": "The remains have crumbled to dust and memory.",
+        "effects": [
+          {
+            "type": "supersede_fact",
+            "category": "dust",
+            "setTags": ["dust"],
+            "persistence": { "mode": "permanent" }
+          }
+        ]
+      }
+    }
+  ]
+}

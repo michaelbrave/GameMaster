@@ -1,0 +1,76 @@
+{
+  "$id": "worldforge/command-response.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Command response with replayable resolution trace",
+  "type": "object",
+  "required": ["resolution", "session", "worldTick"],
+  "additionalProperties": false,
+  "properties": {
+    "resolution": {
+      "type": "object",
+      "required": ["id", "command", "outcome", "worldTick", "text", "rolls", "events"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.json#/definitions/uuid" },
+        "command": { "enum": ["travel", "encounter-action"] },
+        "outcome": { "type": "string" },
+        "worldTick": { "type": "integer", "minimum": 0 },
+        "text": { "type": "array", "items": { "type": "string" } },
+        "rolls": { "type": "array", "items": { "$ref": "#/definitions/rollRecord" } },
+        "events": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "session": {
+      "type": "object",
+      "required": ["id", "version", "position", "pendingEncounter"],
+      "properties": {
+        "id": { "$ref": "common.json#/definitions/uuid" },
+        "version": { "type": "integer", "minimum": 1 },
+        "position": { "$ref": "common.json#/definitions/axial" },
+        "pendingEncounter": true
+      }
+    },
+    "worldTick": { "type": "integer", "minimum": 0 }
+  },
+  "definitions": {
+    "rollRecord": {
+      "type": "object",
+      "required": ["tableId", "tableVersion", "label", "purpose", "depth", "selection", "selectedEntryId", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "tableId": { "type": "string" },
+        "tableVersion": { "type": "integer", "minimum": 1 },
+        "label": { "type": "string" },
+        "purpose": { "type": "string" },
+        "depth": { "type": "integer", "minimum": 0 },
+        "selection": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["mode", "roll", "totalWeight"],
+              "additionalProperties": false,
+              "properties": {
+                "mode": { "const": "weighted" },
+                "roll": { "type": "integer", "minimum": 1 },
+                "totalWeight": { "type": "integer", "minimum": 1 }
+              }
+            },
+            {
+              "type": "object",
+              "required": ["mode", "expr", "dice", "total"],
+              "additionalProperties": false,
+              "properties": {
+                "mode": { "const": "dice" },
+                "expr": { "type": "string" },
+                "dice": { "type": "array", "items": { "type": "integer", "minimum": 1 } },
+                "total": { "type": "integer" }
+              }
+            }
+          ]
+        },
+        "selectedEntryId": { "type": "string" },
+        "text": { "type": "string" }
+      }
+    }
+  }
+}

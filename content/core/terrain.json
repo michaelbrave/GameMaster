@@ -1,0 +1,8 @@
+{
+  "plains":    { "key": "plains",    "label": "Plains",    "moveCost": 1, "passable": true,  "glyph": "P", "color": "#9ab86a" },
+  "forest":    { "key": "forest",    "label": "Forest",    "moveCost": 2, "passable": true,  "glyph": "F", "color": "#4a7c59" },
+  "hills":     { "key": "hills",     "label": "Hills",     "moveCost": 2, "passable": true,  "glyph": "H", "color": "#b09a6a" },
+  "swamp":     { "key": "swamp",     "label": "Swamp",     "moveCost": 3, "passable": true,  "glyph": "S", "color": "#5d6b8a" },
+  "mountains": { "key": "mountains", "label": "Mountains", "moveCost": 1, "passable": false, "glyph": "M", "color": "#8a8a8a" },
+  "water":     { "key": "water",     "label": "Water",     "moveCost": 1, "passable": false, "glyph": "W", "color": "#3d6b9a" }
+}

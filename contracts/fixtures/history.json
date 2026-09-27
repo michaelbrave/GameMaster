@@ -1,0 +1,271 @@
+{
+  "entries": [
+    {
+      "seq": 58,
+      "tick": 0,
+      "type": "world_created",
+      "location": null,
+      "text": "World \"Fixture World\" created (core@1.0.0)."
+    },
+    {
+      "seq": 60,
+      "tick": 0,
+      "type": "session_started",
+      "location": null,
+      "text": "Wren enters the world."
+    },
+    {
+      "seq": 61,
+      "tick": 0,
+      "type": "hex_discovered",
+      "location": {
+        "q": 0,
+        "r": 0
+      },
+      "text": "Discovered plains at 0,0."
+    },
+    {
+      "seq": 63,
+      "tick": 0,
+      "type": "time_advanced",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Time passes: tick 0 → 2."
+    },
+    {
+      "seq": 64,
+      "tick": 2,
+      "type": "character_moved",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Traveled to 1,0 (hills, cost 2)."
+    },
+    {
+      "seq": 65,
+      "tick": 2,
+      "type": "hex_discovered",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Discovered hills at 1,0."
+    },
+    {
+      "seq": 66,
+      "tick": 2,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+    },
+    {
+      "seq": 67,
+      "tick": 2,
+      "type": "encounter_started",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Bandits burst from cover, weapons drawn, demanding your coin!"
+    },
+    {
+      "seq": 68,
+      "tick": 2,
+      "type": "encounter_resolved",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Choice: Fight them off. You drive off the bandits; their dead lie among the stones."
+    },
+    {
+      "seq": 69,
+      "tick": 2,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "You drive off the bandits; their dead lie among the stones."
+    },
+    {
+      "seq": 70,
+      "tick": 2,
+      "type": "fact_created",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "A new fact takes hold: remains."
+    },
+    {
+      "seq": 71,
+      "tick": 2,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Left to rot, the fallen may attract worse things."
+    },
+    {
+      "seq": 73,
+      "tick": 2,
+      "type": "time_advanced",
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "text": "Time passes: tick 2 → 4."
+    },
+    {
+      "seq": 74,
+      "tick": 4,
+      "type": "character_moved",
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "text": "Traveled to 2,0 (forest, cost 2)."
+    },
+    {
+      "seq": 75,
+      "tick": 4,
+      "type": "hex_discovered",
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "text": "Discovered forest at 2,0."
+    },
+    {
+      "seq": 76,
+      "tick": 4,
+      "type": "log_appended",
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "text": "Strange signs cross your path."
+    },
+    {
+      "seq": 77,
+      "tick": 4,
+      "type": "log_appended",
+      "location": {
+        "q": 2,
+        "r": 0
+      },
+      "text": "Distant thunder rolls across the hills."
+    },
+    {
+      "seq": 79,
+      "tick": 4,
+      "type": "hex_discovered",
+      "location": {
+        "q": 2,
+        "r": -1
+      },
+      "text": "Discovered water at 2,-1."
+    },
+    {
+      "seq": 80,
+      "tick": 4,
+      "type": "travel_blocked",
+      "location": {
+        "q": 2,
+        "r": -1
+      },
+      "text": "Water is impassable."
+    },
+    {
+      "seq": 81,
+      "tick": 4,
+      "type": "time_advanced",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Time passes: tick 4 → 6."
+    },
+    {
+      "seq": 82,
+      "tick": 6,
+      "type": "character_moved",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Traveled to 1,0 (hills, cost 2)."
+    },
+    {
+      "seq": 83,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "The way is quiet. Nothing troubles the journey."
+    },
+    {
+      "seq": 85,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "The remains lie undisturbed."
+    },
+    {
+      "seq": 87,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Scavengers have been at the remains; little of value is left."
+    },
+    {
+      "seq": 88,
+      "tick": 6,
+      "type": "fact_superseded",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "The remains has become scavenged remains."
+    },
+    {
+      "seq": 89,
+      "tick": 6,
+      "type": "fact_created",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "A new fact takes hold: scavenger activity."
+    },
+    {
+      "seq": 90,
+      "tick": 6,
+      "type": "log_appended",
+      "location": {
+        "q": 1,
+        "r": 0
+      },
+      "text": "Tracks and feathers mark a busy feast."
+    }
+  ],
+  "total": 27,
+  "offset": 0,
+  "limit": 100
+}
