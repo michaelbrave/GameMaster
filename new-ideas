@@ -1,0 +1,144 @@
+
+
+## Game design doc draft
+
+### Working title
+**Shared Solo RPG Sandbox**
+
+### High concept
+A persistent multiplayer roleplaying sandbox inspired by solo tabletop RPG play, hexcrawls, and MUDs, where the world is procedurally resolved by rules, oracles, and state tracking, and an LLM narrator turns those facts into readable story text. The world evolves over time through player actions and optional seasonal “patches,” but the system is designed so the procedural layer stays authoritative and the LLM only adds narrative polish. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+### Design pillars
+- **Procedures first.** Game outcomes come from rules, tables, oracles, and state transitions, not freeform AI improvisation. [reddit](https://www.reddit.com/r/RPGdesign/comments/vriq62/what_type_of_combat_do_hex_grids_work_best_with/)
+- **Persistent shared world.** Discoveries, landmarks, faction changes, and player actions remain in the world as canon state.   
+- **Narrative from facts.** The LLM summarizes and stylizes resolved events rather than generating the world from scratch. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+- **Expandable modes.** Overworld exploration and dungeon crawling are separate procedures that share the same world state. [neutronium](https://neutronium.games/nb/blog/hex-grid-board-game-design)
+- **Author-friendly content.** Worldbuilders should be able to add regions, sites, factions, and encounter tables without coding everything by hand. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+### Core player fantasy
+The player is an adventurer in a living world that feels like a solo tabletop campaign, except the same world can be visited by many people. Each session is a blend of exploration, discovery, consequences, and improvised story, with the engine handling the hidden machinery and the narrator turning it into fiction. [neutronium](https://neutronium.games/nb/blog/hex-grid-board-game-design)
+
+## World structure
+
+### Overworld map
+The overworld is a shared travel layer composed of grid-based regions. You proposed a square-grid variant where corners act like intermediate spaces, creating more flexible movement and better support for both wilderness and structured areas than a pure hex map. 
+
+### Grid model
+- **Primary cells:** square tiles with terrain, tags, and embedded landmarks.  
+- **Corner links:** corner spaces function as in-between adjacency nodes, allowing more natural diagonal-style movement without relying on standard square-grid diagonal rules.  
+- **Terrain blending:** adjacent tiles can visually blend at edges and corners so the map still reads clearly despite the nonstandard movement model.   
+
+### Site types
+- **Landmarks:** persistent points of interest on the overworld.  
+- **Settlements:** towns, camps, and faction hubs.  
+- **Adventure sites:** dungeons, ruins, lairs, shrines, and special encounters.  
+- **Faction territory:** regions that can change hands or change behavior over time.   
+
+## Core gameplay loop
+
+### Overworld loop
+1. Choose destination or action.  
+2. Resolve movement using the grid procedure.  
+3. Roll or consult oracles for travel events, discoveries, or complications.  
+4. Update tile state, faction clocks, and player state.  
+5. Pass the resolved facts to the narrator layer for presentation. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+### Dungeon loop
+1. Enter a site from the overworld.  
+2. Switch to a more granular room-by-room procedure.  
+3. Resolve exploration, hazards, encounters, and loot with dungeon-specific tables.  
+4. Persist changes to the site state so future visitors see the consequences. [neutronium](https://neutronium.games/nb/blog/hex-grid-board-game-design)
+
+### Downtime loop
+1. Return to a settlement or safe zone.  
+2. Choose projects, recovery, rumors, faction interaction, or crafting.  
+3. Roll progress and complications.  
+4. Advance clocks and update the shared world. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+## Persistence and history
+
+### Canon model
+Each tile or site has a baseline state plus an event history. Once something is discovered or changed, it becomes part of the world’s canonical record unless explicitly marked temporary or private. 
+
+### Example persistent changes
+- A player carves their name into a tree.  
+- Bandits are killed and later become corpses, scavenger bait, or zombies.  
+- A bridge collapses after repeated damage.  
+- A faction moves into a cleared ruin. 
+
+### State rules
+- **Locked facts:** major landmarks, settlements, and permanent discoveries.  
+- **Mutable facts:** recent events, creatures, weather effects, temporary hazards.  
+- **Tag-driven history:** past events add tags that later procedures can reference, such as “desecrated,” “haunted,” “cleared,” or “overrun.” [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+## Oracle and narrator flow
+
+### Resolution pipeline
+1. Player chooses an action.  
+2. The rules engine checks the relevant tables and oracles.  
+3. Mechanical outcomes are finalized.  
+4. The LLM receives the resolved facts and turns them into story text. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+### LLM role
+The LLM is not the primary generator. It acts as a narrator that:
+- Expands structured outcomes into readable prose.  
+- Maintains tone and continuity.  
+- Uses existing history and discovered facts as context.  
+- Never overrides mechanical results. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+### Example input to narrator
+- Location: old oak hex, stormy weather, carcasses of bandits, vulture activity, tree carving by player.  
+- Oracle result: no new encounter, but scavengers disturbed by the bodies.  
+- Mechanical state: +1 danger tag, corpses remain, faction clue revealed.  
+- Narrator task: produce a short atmospheric scene from those facts. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+## Content authoring
+
+### Author tools
+- Region editor.  
+- Tile and site editor.  
+- Faction editor.  
+- Table/oracle editor.  
+- Event log and version history viewer. 
+
+### Content format
+Content should be data-first and modular:
+- JSON or database records for all world objects.  
+- Short prompts and keyed tables for sites, factions, and events.  
+- Tags for tone, danger, terrain, and content compatibility. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+### Patch cycle
+The world can evolve in seasons or patches:
+- Designers review accumulated history.  
+- Major changes are promoted to canon.  
+- New sites, factions, or map states are added.  
+- The world advances to the next era. 
+
+## Phase 1 build scope
+
+### Minimum viable version
+- One overworld region.  
+- One grid system.  
+- One travel procedure.  
+- One simple oracle set.  
+- One LLM narration pass.  
+- One persistent log of changes. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+### Out of scope for first version
+- Full MMO systems.  
+- Real-time combat.  
+- Large-scale economy.  
+- Fully autonomous LLM world generation.  
+- Complex multiplayer social systems. [youtube](https://www.youtube.com/watch?v=Lk8RQl5z3W8)
+
+## Recommended build order
+
+1. Define the movement and adjacency rules for the square-plus-corner grid.  
+2. Build the world data schema.  
+3. Implement overworld travel and discovery.  
+4. Add persistence and event logs.  
+5. Add the narrator layer.  
+6. Add one dungeon site type.  
+7. Add authoring tools and versioning. [neutronium](https://neutronium.games/nb/blog/hex-grid-board-game-design)
+
+If you want, I can do the next step and turn this into a more formal **spec sheet with sections like systems, data structures, UI, and implementation requirements**, or I can rewrite it in a more “studio pitch/GDD” style.
