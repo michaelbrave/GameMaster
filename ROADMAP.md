@@ -85,6 +85,8 @@ Everything here is also described in HANDOFF §7–8; this is the tracking list.
 
 **Testing/docs:** Playwright in CI · journal paging UI (the API has paginated in SQL since 2026-09-26) · table diff/deprecation · content-release migration path.
 
+**UI/UX polish:** the detailed backlog (layout & navigation, feedback & errors, journal, onboarding, presentation, rewind/undo) lives in [HANDOFF §13](./HANDOFF.md#13-uiux-backlog-from-the-2026-09-26-review); feed items into the phases above as they become relevant.
+
 ## 7. How we work
 
 - **Thin vertical slices** over wide horizontal layers; contracts and fixtures before dependent implementation.

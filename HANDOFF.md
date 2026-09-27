@@ -205,3 +205,44 @@ A full codebase review was done on this date. Outcomes:
 **Next work:** remaining Phase A fixes, then Phase B Tier 1, in thin vertical slices.
 
 **Phase A progress (2026-09-26, same day):** the first stabilize slice shipped — store-side history filtering/pagination (`EventQuery` on the port, both adapters, migration `0003` indexes, `limit=0` route fix), the `getMap` N+1 fix, the client view split (`Views/Play.elm` 884→233 lines + `Views/Play/{Map,Encounter,Panels}.elm` + shared `Views/Components.elm`), and the test-helper dedupe. New coverage: `test/integration/historyJourney.ts` runs the same pagination/visibility journey against the memory adapter and real PostgreSQL. Test totals went 71→73 in the server block (two new history tests).
+
+## 13. UI/UX backlog (from the 2026-09-26 review)
+
+The detailed list behind ROADMAP's game-feel and polish items. Feed these into phases as they become relevant; ROADMAP §6 remains the tracking list.
+
+### Layout & navigation
+
+- **The sidebar is overloaded** (battlefield section + encounter panel + travel buttons + journal/inspector/trace tabs). Demote the travel button list into a collapsed "Accessible travel list" — keep it, it's the a11y story, but map-click and arrow keys are the primary travel input. Move "Open battlefield" into the topbar or a hex-context action.
+- **Auto-switch tabs on context:** Inspector when a hex is selected, Trace when a command resolves. Today an action's feedback is invisible if you're on the wrong tab.
+- **Topbar grouping** for narrow screens: identity+clock left, Play/Build center, view controls right. Move the keyboard hints into a `?` shortcuts-cheatsheet overlay (existing keys: arrows+Enter travel, m/l map/list, b build, p/Escape back to play).
+- **Map zoom/pan** via SVG `viewBox` controls — required before world radius grows past ~4, and the battlefield will want it too.
+- Re-check the 900px responsive breakpoints once zoom exists.
+
+### Feedback & errors
+
+- **Busy indicator on the map itself** — right now only buttons disable; there is no spinner/skeleton.
+- **Actionable errors:** a 409 `version_conflict` should offer "State changed — Reload" (wired to Refresh); transient network errors should auto-dismiss; consider stacked toast-style notifications instead of one banner.
+- **Encounter spotlight:** number-key shortcuts for choices (1/2/3…), Esc to minimize, a focus trap, and an aria-live announcement. Fill the contract's existing `asset`/`assetLabel` fields — an art slot in the spotlight, starting with a glyph per asset and upgrading to images later.
+
+### Journal & history
+
+- **Journal filters** (tick range, event category) and pin/star for notable entries — it's the DM's session log.
+- **Journal paging UI** — the API has paginated in SQL since 2026-09-26; the UI still loads the latest 200 with no controls (was §8).
+- **Session recap export** (markdown "previously on…") — tracked in ROADMAP Phase D.
+
+### Onboarding
+
+- **One-click "Quick start"** on the setup screen (the defaults are already good).
+- **Link the `?fixtures=1` recorded demo** from the setup screen ("see a sample adventure") — it's a great onboarding tool that nobody can discover.
+- **First-run coach marks** on the map ("click a glowing space to travel").
+
+### Presentation
+
+- Terrain glyphs/colors already come from content for the map legend; consider driving the CSS palette (`styles.css :root` tokens) from content too, and move site/fact marker glyphs into content (ROADMAP Phase A backlog).
+- **Sound, optional and late:** a dice-roll click on resolution. Cheap, surprisingly effective.
+- **Fog-of-war polish:** render the board's outer edge / "edge of the world" beyond the discovered frontier.
+
+### Solo-play power features to evaluate (design before combat lands)
+
+- **Rewind/undo:** the event-sourced backend could support "rewind to tick" (or branch the world) in solo play — append-only means a rewind is itself an event, and projections already rebuild. A killer solo-TTRPG feature no competitor has.
+- World forking for playtesting content is the creator-side cousin of the same idea (ROADMAP Phase D).
