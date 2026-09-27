@@ -139,15 +139,21 @@ export function registerRoutes(
     }),
   }));
 
-  app.add("GET", "/api/v1/sessions/:sessionId/history", async (req) => ({
-    status: 200,
-    body: await getHistory(
-      store,
-      req.params.sessionId,
-      Number.parseInt(req.query.get("offset") ?? "0", 10) || 0,
-      Number.parseInt(req.query.get("limit") ?? "100", 10) || 100,
-    ),
-  }));
+  app.add("GET", "/api/v1/sessions/:sessionId/history", async (req) => {
+    // Parse here (defaulting only on absence/garbage); getHistory owns
+    // clamping to the valid range so 0 is not silently the default.
+    const offsetParam = Number.parseInt(req.query.get("offset") ?? "", 10);
+    const limitParam = Number.parseInt(req.query.get("limit") ?? "", 10);
+    return {
+      status: 200,
+      body: await getHistory(
+        store,
+        req.params.sessionId,
+        Number.isNaN(offsetParam) ? 0 : offsetParam,
+        Number.isNaN(limitParam) ? 100 : limitParam,
+      ),
+    };
+  });
 
   app.add(
     "GET",

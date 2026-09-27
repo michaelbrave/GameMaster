@@ -78,22 +78,18 @@ export async function getHexDetail(
     const world = await tx.getWorld(session.worldId);
     if (!world) throw notFound(`world ${session.worldId}`);
     requirePinnedContent(world, engine);
-    const events = await tx.listEventsByWorld(session.worldId);
-    const history = events
-      .filter(
-        (e) =>
-          e.visibility === "public" &&
-          e.location &&
-          e.location.q === at.q &&
-          e.location.r === at.r,
-      )
-      .map((e) => ({
-        seq: e.seq,
-        tick: e.worldTick,
-        type: e.type,
-        location: e.location,
-        text: describeEvent(e),
-      }));
+    const events = await tx.listEventsByWorld(session.worldId, {
+      visibility: "public",
+      locations: [at],
+      includeUnlocated: false,
+    });
+    const history = events.map((e) => ({
+      seq: e.seq,
+      tick: e.worldTick,
+      type: e.type,
+      location: e.location,
+      text: describeEvent(e),
+    }));
     return { hex: toSummary(engine, hex, discovery.tick), history };
   });
 }
@@ -108,6 +104,7 @@ export interface HistoryResponse {
 /**
  * Chronological play log: public events on the session stream plus public
  * events at hexes the character has discovered. Nothing undiscovered leaks.
+ * Filtering and pagination happen in the store, not in memory.
  */
 export async function getHistory(
   store: Store,
@@ -119,29 +116,27 @@ export async function getHistory(
     const session = await tx.getSession(sessionId);
     if (!session) throw notFound(`session ${sessionId}`);
     const discoveries = await tx.listDiscoveries(sessionId);
-    const known = new Set(discoveries.map((d) => `${d.q},${d.r}`));
-    const events = await tx.listEventsByWorld(session.worldId);
-    const visible = events.filter((e) => {
-      if (e.visibility !== "public") return false;
-      if (!e.location) return true;
-      return known.has(`${e.location.q},${e.location.r}`);
-    });
-    const entries = visible
-      .map((e) => ({
-        seq: e.seq,
-        tick: e.worldTick,
-        type: e.type,
-        location: e.location,
-        text: describeEvent(e),
-      }))
-      .sort((a, b) => a.seq - b.seq);
     const capped = Math.min(Math.max(limit, 1), 500);
-    return {
-      entries: entries.slice(offset, offset + capped),
-      total: entries.length,
-      offset,
-      limit: capped,
+    const safeOffset = Math.max(offset, 0);
+    const filter = {
+      visibility: "public" as const,
+      locations: discoveries.map((d) => ({ q: d.q, r: d.r })),
+      includeUnlocated: true,
     };
+    const page = await tx.listEventsByWorld(session.worldId, {
+      ...filter,
+      offset: safeOffset,
+      limit: capped,
+    });
+    const total = await tx.countEventsByWorld(session.worldId, filter);
+    const entries = page.map((e) => ({
+      seq: e.seq,
+      tick: e.worldTick,
+      type: e.type,
+      location: e.location,
+      text: describeEvent(e),
+    }));
+    return { entries, total, offset: safeOffset, limit: capped };
   });
 }
 

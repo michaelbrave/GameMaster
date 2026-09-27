@@ -11,6 +11,7 @@ import { DIRECTIONS } from "../../src/domain/axial";
 import { MemoryStore } from "../../src/infrastructure/memoryStore";
 import {
   findDemoSeed,
+  httpClient,
   type PlayClient,
   type PlaythroughResult,
 } from "./playthrough";
@@ -19,21 +20,6 @@ let app: BuiltApp;
 let base: string;
 let client: PlayClient;
 let demo: PlaythroughResult;
-
-function httpClient(baseUrl: string): PlayClient {
-  const call = async (method: string, path: string, body?: unknown) => {
-    const res = await fetch(`${baseUrl}${path}`, {
-      method,
-      headers: { "content-type": "application/json" },
-      body: body === undefined ? undefined : JSON.stringify(body),
-    });
-    return { status: res.status, body: await res.json() };
-  };
-  return {
-    get: (path) => call("GET", path),
-    post: (path, body) => call("POST", path, body),
-  };
-}
 
 before(async () => {
   app = await buildApp(

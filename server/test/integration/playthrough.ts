@@ -17,6 +17,22 @@ export interface PlayClient {
   get(path: string): Promise<{ status: number; body: any }>;
 }
 
+/** Minimal JSON HTTP client for integration tests, built on fetch. */
+export function httpClient(baseUrl: string): PlayClient {
+  const call = async (method: string, path: string, body?: unknown) => {
+    const res = await fetch(`${baseUrl}${path}`, {
+      method,
+      headers: { "content-type": "application/json" },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+    return { status: res.status, body: await res.json() };
+  };
+  return {
+    get: (path) => call("GET", path),
+    post: (path, body) => call("POST", path, body),
+  };
+}
+
 export interface PlaythroughResult {
   seed: string;
   worldId: string;

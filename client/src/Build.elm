@@ -8,6 +8,7 @@ import Json.Decode as Decode
 import Json.Encode as Encode
 import Types exposing (..)
 import Util exposing (ifThen)
+import Views.Components as Components
 
 
 {-| Build mode: inspect/edit roll tables, validate drafts, preview seeded
@@ -252,21 +253,8 @@ view model =
                     TabHistory ->
                         [ historyTab model ]
                )
-            ++ [ errorBanner model ]
+            ++ [ Components.errorBanner DismissError model.error ]
         )
-
-
-errorBanner : Model -> Html Msg
-errorBanner model =
-    case model.error of
-        Nothing ->
-            text ""
-
-        Just message ->
-            div [ class "error-banner", attribute "role" "alert" ]
-                [ span [] [ text message ]
-                , button [ onClick DismissError, attribute "aria-label" "Dismiss" ] [ text "×" ]
-                ]
 
 
 policySummary : Model -> Html Msg

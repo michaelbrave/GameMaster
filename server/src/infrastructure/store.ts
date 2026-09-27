@@ -79,6 +79,25 @@ export interface ResolutionRow {
   createdAt: string;
 }
 
+/**
+ * Optional filter/pagination for event history queries. Both store adapters
+ * implement identical semantics; the application layer owns the visibility
+ * rule and expresses it through these fields.
+ */
+export interface EventQuery {
+  /** Restrict to one visibility class. */
+  visibility?: WorldEvent["visibility"];
+  /**
+   * When set, located events must match one of these coordinates. Events
+   * without a location are included iff `includeUnlocated` (default true).
+   */
+  locations?: Axial[];
+  /** Include events with no location (default true). */
+  includeUnlocated?: boolean;
+  offset?: number;
+  limit?: number;
+}
+
 /* --------------------------------- store port ------------------------------- */
 
 export interface Tx {
@@ -98,7 +117,17 @@ export interface Tx {
 
   /** Append events atomically; stream versions must continue each stream. */
   appendEvents(events: WorldEvent[]): Promise<void>;
-  listEventsByWorld(worldId: string): Promise<WorldEvent[]>;
+  /**
+   * Events of a world in global seq order. Without a query returns all of
+   * them; with one, filters and paginates in storage (adapters must not
+   * stream the full history into memory to slice it).
+   */
+  listEventsByWorld(worldId: string, query?: EventQuery): Promise<WorldEvent[]>;
+  /** Count of events matching the same filters (offset/limit ignored). */
+  countEventsByWorld(
+    worldId: string,
+    query?: Omit<EventQuery, "offset" | "limit">,
+  ): Promise<number>;
   listEventsByStream(streamId: string): Promise<WorldEvent[]>;
   nextStreamVersion(streamId: string): Promise<number>;
 

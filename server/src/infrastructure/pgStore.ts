@@ -6,6 +6,7 @@ import {
   ConcurrencyError,
   DuplicateEventError,
   type DiscoveryRow,
+  type EventQuery,
   type HexProjectionRow,
   type ResolutionRow,
   type SessionRow,
@@ -196,7 +197,7 @@ class PgTx implements Tx {
   }
 
   private async eventsWhere(
-    where: string,
+    clause: string,
     params: unknown[],
   ): Promise<WorldEvent[]> {
     const rows = await this.many(
@@ -204,18 +205,75 @@ class PgTx implements Tx {
               seq::int, type, schema_version AS "schemaVersion", world_tick AS "worldTick",
               recorded_at AS "recordedAt", actor, location, causation_id AS "causationId",
               correlation_id AS "correlationId", visibility, payload
-       FROM events ${where} ORDER BY seq`,
+       FROM events ${clause}`,
       params,
     );
     return rows as unknown as WorldEvent[];
   }
 
-  async listEventsByWorld(worldId: string): Promise<WorldEvent[]> {
-    return this.eventsWhere("WHERE world_id = $1", [worldId]);
+  /**
+   * Translate an EventQuery into a WHERE clause. Located events match by
+   * their JSONB coordinates; unlocated events pass only when the query
+   * includes them. Keep in lockstep with MemoryStore.filterWorldEvents.
+   */
+  private static eventsFilter(
+    worldId: string,
+    query?: EventQuery,
+  ): { where: string; params: unknown[] } {
+    const params: unknown[] = [worldId];
+    const clauses = ["world_id = $1"];
+    if (query?.visibility) {
+      params.push(query.visibility);
+      clauses.push(`visibility = $${params.length}`);
+    }
+    if (query?.locations !== undefined) {
+      params.push(
+        query.locations.map((l) => l.q),
+        query.locations.map((l) => l.r),
+      );
+      const located = `((location->>'q')::int, (location->>'r')::int) IN (SELECT * FROM unnest($${params.length - 1}::int[], $${params.length}::int[]))`;
+      clauses.push(
+        (query.includeUnlocated ?? true)
+          ? `(location IS NULL OR ${located})`
+          : `(location IS NOT NULL AND ${located})`,
+      );
+    } else if (query && query.includeUnlocated === false) {
+      clauses.push("location IS NOT NULL");
+    }
+    return { where: `WHERE ${clauses.join(" AND ")}`, params };
+  }
+
+  async listEventsByWorld(
+    worldId: string,
+    query?: EventQuery,
+  ): Promise<WorldEvent[]> {
+    const { where, params } = PgTx.eventsFilter(worldId, query);
+    let paging = "";
+    if (query?.offset !== undefined) {
+      params.push(query.offset);
+      paging += ` OFFSET $${params.length}`;
+    }
+    if (query?.limit !== undefined) {
+      params.push(query.limit);
+      paging += ` LIMIT $${params.length}`;
+    }
+    return this.eventsWhere(`${where} ORDER BY seq${paging}`, params);
+  }
+
+  async countEventsByWorld(
+    worldId: string,
+    query?: Omit<EventQuery, "offset" | "limit">,
+  ): Promise<number> {
+    const { where, params } = PgTx.eventsFilter(worldId, query);
+    const row = await this.one<{ count: number }>(
+      `SELECT COUNT(*)::int AS count FROM events ${where}`,
+      params,
+    );
+    return Number(row?.count ?? 0);
   }
 
   async listEventsByStream(streamId: string): Promise<WorldEvent[]> {
-    return this.eventsWhere("WHERE stream_id = $1", [streamId]);
+    return this.eventsWhere("WHERE stream_id = $1 ORDER BY seq", [streamId]);
   }
 
   async nextStreamVersion(streamId: string): Promise<number> {

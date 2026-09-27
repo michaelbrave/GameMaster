@@ -23,7 +23,8 @@ import { migrate } from "../../src/infrastructure/migrate";
 import { PgStore } from "../../src/infrastructure/pgStore";
 import { rebuildHexProjection } from "../../src/application/projection";
 import type { PlayClient } from "./playthrough";
-import { findDemoSeed } from "./playthrough";
+import { findDemoSeed, httpClient } from "./playthrough";
+import { historyJourney } from "./historyJourney";
 
 /**
  * PostgreSQL adapter integration test. Uses embedded-postgres (real server
@@ -39,21 +40,6 @@ let dataDir: string;
 let store: PgStore;
 let app: BuiltApp;
 let client: PlayClient;
-
-function httpClient(baseUrl: string): PlayClient {
-  const call = async (method: string, path: string, body?: unknown) => {
-    const res = await fetch(`${baseUrl}${path}`, {
-      method,
-      headers: { "content-type": "application/json" },
-      body: body === undefined ? undefined : JSON.stringify(body),
-    });
-    return { status: res.status, body: await res.json() };
-  };
-  return {
-    get: (path) => call("GET", path),
-    post: (path, body) => call("POST", path, body),
-  };
-}
 
 before(async () => {
   if (SKIP) return;
@@ -120,6 +106,14 @@ test(
         );
       }
     });
+  },
+);
+
+test(
+  "pg adapter filters and paginates history in SQL",
+  { skip: SKIP, timeout: 60_000 },
+  async () => {
+    await historyJourney(client);
   },
 );
 

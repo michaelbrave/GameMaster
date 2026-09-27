@@ -6,6 +6,7 @@ import {
   ConcurrencyError,
   DuplicateEventError,
   type DiscoveryRow,
+  type EventQuery,
   type HexProjectionRow,
   type ResolutionRow,
   type SessionRow,
@@ -147,12 +148,46 @@ class MemoryTx implements Tx {
     }
   }
 
-  async listEventsByWorld(worldId: string): Promise<WorldEvent[]> {
-    return clone(
-      this.state.events
-        .filter((e) => e.worldId === worldId)
-        .sort((a, b) => a.seq - b.seq),
-    );
+  /**
+   * World events in seq order, with the same EventQuery semantics as the
+   * PostgreSQL adapter (PgTx.eventsFilter). Keep the two in lockstep.
+   */
+  private filterWorldEvents(worldId: string, query?: EventQuery): WorldEvent[] {
+    let list = this.state.events
+      .filter((e) => e.worldId === worldId)
+      .sort((a, b) => a.seq - b.seq);
+    if (!query) return list;
+    if (query.visibility) {
+      list = list.filter((e) => e.visibility === query.visibility);
+    }
+    if (query.locations !== undefined) {
+      const known = new Set(query.locations.map((l) => `${l.q},${l.r}`));
+      const includeUnlocated = query.includeUnlocated ?? true;
+      list = list.filter((e) => {
+        if (!e.location) return includeUnlocated;
+        return known.has(`${e.location.q},${e.location.r}`);
+      });
+    } else if (query.includeUnlocated === false) {
+      list = list.filter((e) => e.location !== null);
+    }
+    return list;
+  }
+
+  async listEventsByWorld(
+    worldId: string,
+    query?: EventQuery,
+  ): Promise<WorldEvent[]> {
+    const filtered = this.filterWorldEvents(worldId, query);
+    const offset = query?.offset ?? 0;
+    const limit = query?.limit ?? filtered.length;
+    return clone(filtered.slice(offset, offset + limit));
+  }
+
+  async countEventsByWorld(
+    worldId: string,
+    query?: Omit<EventQuery, "offset" | "limit">,
+  ): Promise<number> {
+    return this.filterWorldEvents(worldId, query).length;
   }
 
   async listEventsByStream(streamId: string): Promise<WorldEvent[]> {

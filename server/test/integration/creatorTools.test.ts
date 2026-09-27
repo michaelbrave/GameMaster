@@ -4,27 +4,12 @@ import test, { before, after } from "node:test";
 import type { AddressInfo } from "node:net";
 import { buildApp, type BuiltApp } from "../../src/app";
 import { MemoryStore } from "../../src/infrastructure/memoryStore";
-import type { PlayClient } from "./playthrough";
+import { httpClient, type PlayClient } from "./playthrough";
 
 let app: BuiltApp;
 let client: PlayClient;
 let creatorSessionId: string;
 let plainSessionId: string;
-
-function httpClient(baseUrl: string): PlayClient {
-  const call = async (method: string, path: string, body?: unknown) => {
-    const res = await fetch(`${baseUrl}${path}`, {
-      method,
-      headers: { "content-type": "application/json" },
-      body: body === undefined ? undefined : JSON.stringify(body),
-    });
-    return { status: res.status, body: await res.json() };
-  };
-  return {
-    get: (path) => call("GET", path),
-    post: (path, body) => call("POST", path, body),
-  };
-}
 
 before(async () => {
   app = await buildApp(

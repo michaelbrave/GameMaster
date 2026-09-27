@@ -1,7 +1,7 @@
 import type { Axial } from "../domain/axial";
 import { key as hexKey } from "../domain/axial";
 import { gridSpaces, adjacent, type GridType } from "../domain/grid";
-import type { Store } from "../infrastructure/store";
+import type { SessionRow, Store, WorldRow } from "../infrastructure/store";
 import { notFound } from "./errors";
 import type { Engine } from "./engine";
 import {
@@ -22,6 +22,17 @@ export interface SessionStateResponse {
   discoveredCount: number;
 }
 
+/** Legal one-step destinations from the session position on the world's grid. */
+function reachableSpaces(
+  engine: Engine,
+  world: WorldRow,
+  session: SessionRow,
+): Axial[] {
+  return gridSpaces(engine.pack.worldgen.regionRadius, world.gridType).filter(
+    (h) => adjacent({ q: session.q, r: session.r }, h, world.gridType),
+  );
+}
+
 export async function getSessionState(
   store: Store,
   engine: Engine,
@@ -34,12 +45,7 @@ export async function getSessionState(
     if (!world) throw notFound(`world ${session.worldId}`);
     requirePinnedContent(world, engine);
     const discoveries = await tx.listDiscoveries(sessionId);
-    const reachable = gridSpaces(
-      engine.pack.worldgen.regionRadius,
-      world.gridType,
-    ).filter((h) =>
-      adjacent({ q: session.q, r: session.r }, h, world.gridType),
-    );
+    const reachable = reachableSpaces(engine, world, session);
     return {
       session: toSessionDto(session),
       worldTick: world.currentTick,
@@ -85,19 +91,18 @@ export async function getMap(
     requirePinnedContent(world, engine);
     const discoveries = await tx.listDiscoveries(sessionId);
     const visitedTick = new Map(discoveries.map((d) => [hexKey(d), d.tick]));
+    // One query for the world's projections, then pick the discovered subset:
+    // no per-hex round trips.
+    const projections = await tx.listHexProjections(session.worldId);
+    const byKey = new Map(projections.map((h) => [hexKey(h), h]));
     const hexes: HexSummaryDto[] = [];
     for (const d of discoveries) {
-      const hex = await tx.getHexProjection(session.worldId, d);
+      const hex = byKey.get(hexKey(d));
       if (hex)
         hexes.push(toSummary(engine, hex, visitedTick.get(hexKey(d)) ?? 0));
     }
     hexes.sort((a, b) => a.r - b.r || a.q - b.q);
-    const reachable = gridSpaces(
-      engine.pack.worldgen.regionRadius,
-      world.gridType,
-    ).filter((h) =>
-      adjacent({ q: session.q, r: session.r }, h, world.gridType),
-    );
+    const reachable = reachableSpaces(engine, world, session);
     const legend = Object.fromEntries(
       Object.values(engine.pack.terrain).map((t) => [
         t.key,

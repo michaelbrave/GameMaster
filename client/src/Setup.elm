@@ -5,6 +5,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onCheck, onClick, onInput)
 import Types exposing (SessionState)
 import Util exposing (ifThen)
+import Views.Components as Components
 
 
 {-| Setup screen state: the new-world form plus (when a session id was saved by
@@ -131,7 +132,7 @@ view model =
                 [ type_ "button", onClick StartWorld, disabled model.busy, class "primary" ]
                 [ text (ifThen model.busy "Creating world…" "Create world & play") ]
             ]
-        , errorBanner model
+        , Components.errorBanner DismissError model.error
         ]
 
 
@@ -169,16 +170,3 @@ resumeCard model =
 
         _ ->
             text ""
-
-
-errorBanner : Model -> Html Msg
-errorBanner model =
-    case model.error of
-        Nothing ->
-            text ""
-
-        Just message ->
-            div [ class "error-banner", attribute "role" "alert" ]
-                [ span [] [ text message ]
-                , button [ onClick DismissError, attribute "aria-label" "Dismiss" ] [ text "×" ]
-                ]

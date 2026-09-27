@@ -44,14 +44,14 @@ npm run format:check          # prettier (server) + elm-format (client)
 
 ## 3. Tests
 
-**91 distinct tests, all passing.** `npm test` prints `71 / 6 / 19 / 1` because `test:contracts` re-runs the 6 contract tests that `test:server` already includes.
+**93 distinct tests, all passing.** `npm test` prints `73 / 6 / 19 / 1` because `test:contracts` re-runs the 6 contract tests that `test:server` already includes.
 
 | Suite | Count | Covers |
 | --- | --- | --- |
 | `server/test/unit` | 42 | axial math, grid/spacing (hex + square-diamond), rng/dice determinism, weighted/dice/nested table resolution, conditions, cycle/depth guards, draft validation, biome clustering, battlefield routing |
 | `server/test/contracts` | 6 | checked-in fixtures + **live** responses vs JSON Schemas; all 12 content tables + evolution rule vs the content contract; OpenAPI `$ref` sanity |
-| `server/test/integration` (in-memory) | 19 | full consequence loop over HTTP, replay determinism, idempotent retry, 409/422 mapping, hidden-info filtering (404 + no leakage), projection rebuild == incremental, creator tools + policy gating, square-diamond grid, battlefield journey, content-declared presentation surface |
-| `server/test/integration/pg.test.ts` | 4 | **real PostgreSQL** (embedded binaries, user-space): idempotent migrations, full loop, projection rebuild, SQL-level idempotency/concurrency, `grid_type` persistence |
+| `server/test/integration` (in-memory) | 20 | full consequence loop over HTTP, replay determinism, idempotent retry, 409/422 mapping, hidden-info filtering (404 + no leakage), projection rebuild == incremental, creator tools + policy gating, square-diamond grid, battlefield journey, content-declared presentation surface, store-side history pagination |
+| `server/test/integration/pg.test.ts` | 5 | **real PostgreSQL** (embedded binaries, user-space): idempotent migrations, full loop, projection rebuild, SQL-level idempotency/concurrency, `grid_type` persistence, SQL history filtering/pagination |
 | `client/tests` (elm-test) | 19 | contract decoders against real engine fixtures (incl. presentation surface + rejection of a misspelled one), API error-envelope decoding, hex/board geometry |
 | `e2e/consequence-loop.test.mjs` | 1 | spawned server process, full loop over real HTTP, full event vocabulary + stored roll traces |
 
@@ -118,8 +118,8 @@ Correctness-first; the intent was to remove silent failure modes, not to add fea
 
 ### Tier 2 — scaling (will bite before the feature set does)
 
-1. **`getHistory` / `getHexDetail` / `getCreatorHistory` load the entire world event stream** and filter/paginate in JavaScript (`application/history.ts`). `offset`/`limit` never reach SQL, and `total` forces a full scan regardless. Every history read is O(total events ever). Fix: push pagination into SQL.
-2. **`getMap` is an N+1** — one `getHexProjection` query per discovered hex (`queries.ts`); `listHexProjections` exists and is unused by the query path.
+1. ~~**`getHistory` / `getHexDetail` / `getCreatorHistory` load the entire world event stream** and filter/paginate in JavaScript (`application/history.ts`). `offset`/`limit` never reach SQL, and `total` forces a full scan regardless. Every history read is O(total events ever). Fix: push pagination into SQL.~~ **FIXED 2026-09-26:** the store port gained `EventQuery` (visibility / location-set / unlocated-inclusion filters + offset/limit) and `countEventsByWorld`, implemented identically by both adapters (`PgTx.eventsFilter` ⇆ `MemoryStore.filterWorldEvents` — keep them in lockstep). `getHistory` and `getHexDetail` filter and paginate in storage; migration `0003` adds the supporting indexes; `routes.ts` no longer turns `limit=0` into the default. Verified by `test/integration/historyJourney.ts` run against memory **and** real PostgreSQL. `getCreatorHistory` intentionally still returns everything — it is the complete-history creator tool.
+2. ~~**`getMap` is an N+1** — one `getHexProjection` query per discovered hex (`queries.ts`); `listHexProjections` exists and is unused by the query path.~~ **FIXED 2026-09-26:** one `listHexProjections` call keyed into a `Map`; the duplicated `reachable` computation was extracted into `reachableSpaces`.
 3. **`hex_projections.facts` grows without bound.** Superseded facts are never pruned, so the JSONB blob and every map/detail rebuild grow monotonically with world age. The most likely thing to actually hurt on a long run.
 4. **A single travel command is ~10 sequential DB round trips.** `EventFactory.emit` does a `SELECT MAX(stream_version)` the first time a command touches each stream; `appendEvents` inserts one row per event, unbatched.
 5. **`routesFor` is O(spaces²) BFS called per token per response** (`domain/battlefield.ts`). Fine at radius 2–8 today, unusable at radius 8 with 50 tokens.
@@ -127,7 +127,7 @@ Correctness-first; the intent was to remove silent failure modes, not to add fea
 
 ### Tier 3 — cleanup (cheap, prevents rot)
 
-7. **Duplicated code**: `errorBanner` is byte-identical in three views (`Views/Play.elm`, `Build.elm`, `Setup.elm`); the test `httpClient` helper is copy-pasted four times and belongs in `test/integration/playthrough.ts`; `formatRef` duplicates `domain/content.ts formatTableRef`; the `reachable` computation is duplicated in `queries.ts`; the encounter-choice UI is rendered twice (`encounterSpotlight` + `encounterPanel`). `Util.elm` exists for exactly this and holds only `ifThen`.
+7. **Duplicated code** — mostly **FIXED 2026-09-26**: `errorBanner` now lives in `client/src/Views/Components.elm` (parameterized on the dismiss message; used by Play, Build, Setup); the test `httpClient` is exported once from `test/integration/playthrough.ts`; the `reachable` computation is `reachableSpaces` in `queries.ts`; the encounter-choice UI is one `choiceButtons` in `Views/Play/Encounter.elm` shared by the spotlight and the sidebar panel. **Remaining:** `formatRef` still duplicates `domain/content.ts formatTableRef`.
 8. **`Fixtures.elm` carries ~9 KB of dead payloads** (`actionJson`, `hexDetailJson`) plus an `unused : Encode.Value` that exists only to justify a generated import. Fix in `client/gen-fixtures.mjs`.
 9. **N+1-ish client rendering**: `Views/Play.elm isDiscovered` is a `List.any` per reachable hex; `boardBackdrop` generates `(4r+1)²` polygons; `Battle.elm spaces` recomputes the board every render. All fine at current radii, all O(n²).
 10. **Type safety holes**: `noUncheckedIndexedAccess` is still `false`; `hexStream()` is called with whole `HexProjectionRow` objects where an `Axial` is expected (the `EventFactory` defensively re-normalizes); `travel.ts` mutates the `world` row in place; `config.ts` derives the repo root from `__dirname`, which only works under the `dist/src/` layout.
@@ -202,4 +202,6 @@ A full codebase review was done on this date. Outcomes:
 - **Tier 4 — later:** LLM narration strictly inside the narrator boundary, multiplayer/shared worlds, towns/dungeons/factions after combat proves out.
 - **Strategic questions to settle before heavy engine work:** what brings the player back (working answer: character progression + a world that changed while away), party model shape, combat-from-oracle vs. beside-oracle, and content throughput as a metric (ROADMAP §5).
 
-**Next work:** Phase A fixes, then Phase B Tier 1, in thin vertical slices.
+**Next work:** remaining Phase A fixes, then Phase B Tier 1, in thin vertical slices.
+
+**Phase A progress (2026-09-26, same day):** the first stabilize slice shipped — store-side history filtering/pagination (`EventQuery` on the port, both adapters, migration `0003` indexes, `limit=0` route fix), the `getMap` N+1 fix, the client view split (`Views/Play.elm` 884→233 lines + `Views/Play/{Map,Encounter,Panels}.elm` + shared `Views/Components.elm`), and the test-helper dedupe. New coverage: `test/integration/historyJourney.ts` runs the same pagination/visibility journey against the memory adapter and real PostgreSQL. Test totals went 71→73 in the server block (two new history tests).

@@ -29,9 +29,9 @@ Known limitations and the full known-bad list live in [HANDOFF.md](./HANDOFF.md)
 
 Fix the things that will bite before the feature set does (details in HANDOFF §7):
 
-1. **Server scaling:** push history pagination into SQL (`history.ts` currently loads the whole event stream into JS); fix the `getMap` N+1 (one query per hex); prune superseded facts from `hex_projections` (the JSONB blob grows forever); batch the ~10 sequential round trips per command; cache battlefield `routesFor` per board version; stop `MemoryStore` deep-cloning the world per transaction.
-2. **Client cleanup:** split `Views/Play.elm` (map / encounter / panels), deduplicate `errorBanner` (×3) and the encounter-choice UI (×2), move site/fact marker glyphs into content, fix `gen-fixtures.mjs` dead payloads, replace `String`-typed modes/kinds in `Battle.elm`/`Setup.elm` with custom types, Dict-keyed hex lookups instead of O(n²) scans.
-3. **Hygiene:** enable `noUncheckedIndexedAccess`, fix the double URL-decode of table ids, rename the inverted `shouldListen` flag, dedupe the test `httpClient` helper, wire Playwright specs into CI or remove them, add UI paging for the journal.
+1. **Server scaling:** ~~push history pagination into SQL~~ (done 2026-09-26 — `EventQuery` filter/pagination on the store port, both adapters, migration `0003` indexes); ~~fix the `getMap` N+1~~ (done 2026-09-26 — one projection query per map load); prune superseded facts from `hex_projections` (the JSONB blob grows forever); batch the ~10 sequential round trips per command; cache battlefield `routesFor` per board version; stop `MemoryStore` deep-cloning the world per transaction.
+2. **Client cleanup:** ~~split `Views/Play.elm`~~ (done 2026-09-26 — `Views/Play/{Map,Encounter,Panels}.elm`, Play.elm 884→233 lines); ~~deduplicate `errorBanner` (×3) and the encounter-choice UI (×2)~~ (done — shared `Views/Components.elm` + `choiceButtons`); move site/fact marker glyphs into content; fix `gen-fixtures.mjs` dead payloads; replace `String`-typed modes/kinds in `Battle.elm`/`Setup.elm` with custom types; Dict-keyed hex lookups instead of O(n²) scans.
+3. **Hygiene:** ~~dedupe the test `httpClient` helper~~ (done — exported from `test/integration/playthrough.ts`); enable `noUncheckedIndexedAccess`; fix the double URL-decode of table ids; rename the inverted `shouldListen` flag; wire Playwright specs into CI or remove them; add UI paging for the journal (the API now paginates in SQL).
 
 
 ### Phase B — make it a game (Tier 1)
@@ -79,11 +79,11 @@ Original-D&D/Whitebox-flavored, **party-based turns**, d20-style resolution, lig
 
 Everything here is also described in HANDOFF §7–8; this is the tracking list.
 
-**Server:** SQL-side history pagination · `getMap` N+1 · `hex_projections.facts` pruning · batched command writes · `routesFor` caching · `MemoryStore` clone cost · `noUncheckedIndexedAccess` · table-id double decode · `shouldListen` rename · `config.ts` `__dirname` root derivation.
+**Server:** `hex_projections.facts` pruning · batched command writes · `routesFor` caching · `MemoryStore` clone cost · `noUncheckedIndexedAccess` · table-id double decode · `shouldListen` rename · `config.ts` `__dirname` root derivation.
 
-**Client:** split `Views/Play.elm` · shared `Views/Components.elm` (errorBanner, tabs) · dedupe encounter UI · glyphs from content · `gen-fixtures.mjs` dead payloads · custom types over mode/kind strings · Dict-keyed map lookups · battlefield board memoization.
+**Client:** glyphs from content · `gen-fixtures.mjs` dead payloads · custom types over mode/kind strings · Dict-keyed map lookups · battlefield board memoization.
 
-**Testing/docs:** Playwright in CI · journal paging UI · table diff/deprecation · content-release migration path.
+**Testing/docs:** Playwright in CI · journal paging UI (the API has paginated in SQL since 2026-09-26) · table diff/deprecation · content-release migration path.
 
 ## 7. How we work
 
